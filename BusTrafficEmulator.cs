@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MMEP
 {
@@ -23,6 +24,8 @@ namespace MMEP
         private bool justDoIt = true;
         private bool isPause = false;
         private int pauseInterval = 1000;
+
+        private object dataOutput;
         internal int PauseInterval
         {
             get { return pauseInterval; }
@@ -33,11 +36,13 @@ namespace MMEP
             }
         }
 
-        internal BusTrafficEmulator()
+        internal BusTrafficEmulator(object dataOutput)
         {
             startData = new StartData();
             outputData = new OutputData();
             Reset();
+
+            this.dataOutput = dataOutput;
         }
         internal void Reset()
         {
@@ -55,6 +60,8 @@ namespace MMEP
                 startLetter++;
             }
             outputData.Reset();
+
+            justDoIt = true;
         }//reset
         internal void MakeTick()
         {
@@ -143,15 +150,34 @@ namespace MMEP
                     await Task.Delay(100);
                     continue;
                 }
-                Console.WriteLine(
-                    "t {0, -10}a {1, -10}b {2, -10}c {3, -10} {4, -10}avgBusLoad {5, -10}",
-                    tick,
-                    listStations[0].usersQueue.Count,
-                    listStations[1].usersQueue.Count,
-                    listStations[2].usersQueue.Count,
-                    act,
-                    AvgBusLoad()
-                );
+                //Console.WriteLine(
+                //    "t {0, -10}a {1, -10}b {2, -10}c {3, -10} {4, -10}avgBusLoad {5, -10}",
+                //    tick,
+                //    listStations[0].usersQueue.Count,
+                //    listStations[1].usersQueue.Count,
+                //    listStations[2].usersQueue.Count,
+                //    act,
+                //    AvgBusLoad()
+                //);
+                //Form1.data
+                if(dataOutput is DataGridView)
+                {
+                    DataGridView d = dataOutput as DataGridView;
+                    if (null == d) continue;
+                    d.Invoke(
+                            (MethodInvoker)delegate {
+                                d.Rows.Add(
+                                    tick,
+                                    listStations[0].usersQueue.Count,
+                                    listStations[1].usersQueue.Count,
+                                    listStations[2].usersQueue.Count,
+                                    act,
+                                    AvgBusLoad()
+                                );
+                            }
+                        );
+                    
+                }
                 MakeTick();
                 await Task.Delay(pauseInterval);
             }

@@ -173,6 +173,11 @@
             // nStSpawnRate
             // 
             this.nStSpawnRate.Location = new System.Drawing.Point(154, 50);
+            this.nStSpawnRate.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nStSpawnRate.Name = "nStSpawnRate";
             this.nStSpawnRate.Size = new System.Drawing.Size(75, 26);
             this.nStSpawnRate.TabIndex = 21;
@@ -180,6 +185,11 @@
             // nTAB
             // 
             this.nTAB.Location = new System.Drawing.Point(154, 80);
+            this.nTAB.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nTAB.Name = "nTAB";
             this.nTAB.Size = new System.Drawing.Size(75, 26);
             this.nTAB.TabIndex = 22;
@@ -187,6 +197,11 @@
             // nTBC
             // 
             this.nTBC.Location = new System.Drawing.Point(154, 110);
+            this.nTBC.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nTBC.Name = "nTBC";
             this.nTBC.Size = new System.Drawing.Size(75, 26);
             this.nTBC.TabIndex = 23;
@@ -194,6 +209,11 @@
             // nTCA
             // 
             this.nTCA.Location = new System.Drawing.Point(154, 140);
+            this.nTCA.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nTCA.Name = "nTCA";
             this.nTCA.Size = new System.Drawing.Size(75, 26);
             this.nTCA.TabIndex = 24;
@@ -201,6 +221,11 @@
             // nU1SpawnCnt
             // 
             this.nU1SpawnCnt.Location = new System.Drawing.Point(154, 170);
+            this.nU1SpawnCnt.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nU1SpawnCnt.Name = "nU1SpawnCnt";
             this.nU1SpawnCnt.Size = new System.Drawing.Size(75, 26);
             this.nU1SpawnCnt.TabIndex = 25;
@@ -208,6 +233,11 @@
             // nU2SpawnCnt
             // 
             this.nU2SpawnCnt.Location = new System.Drawing.Point(154, 200);
+            this.nU2SpawnCnt.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nU2SpawnCnt.Name = "nU2SpawnCnt";
             this.nU2SpawnCnt.Size = new System.Drawing.Size(75, 26);
             this.nU2SpawnCnt.TabIndex = 26;
@@ -215,6 +245,11 @@
             // nBusMaxCnt
             // 
             this.nBusMaxCnt.Location = new System.Drawing.Point(154, 230);
+            this.nBusMaxCnt.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nBusMaxCnt.Name = "nBusMaxCnt";
             this.nBusMaxCnt.Size = new System.Drawing.Size(75, 26);
             this.nBusMaxCnt.TabIndex = 27;
@@ -222,6 +257,11 @@
             // nBusMaxCapacity
             // 
             this.nBusMaxCapacity.Location = new System.Drawing.Point(154, 260);
+            this.nBusMaxCapacity.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nBusMaxCapacity.Name = "nBusMaxCapacity";
             this.nBusMaxCapacity.Size = new System.Drawing.Size(75, 26);
             this.nBusMaxCapacity.TabIndex = 28;
@@ -229,13 +269,24 @@
             // nBreackingChance
             // 
             this.nBreackingChance.Location = new System.Drawing.Point(154, 290);
+            this.nBreackingChance.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nBreackingChance.Name = "nBreackingChance";
             this.nBreackingChance.Size = new System.Drawing.Size(75, 26);
             this.nBreackingChance.TabIndex = 29;
             // 
             // nAvgAwaitTime
             // 
+            this.nAvgAwaitTime.Enabled = false;
             this.nAvgAwaitTime.Location = new System.Drawing.Point(154, 380);
+            this.nAvgAwaitTime.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.nAvgAwaitTime.Name = "nAvgAwaitTime";
             this.nAvgAwaitTime.Size = new System.Drawing.Size(75, 26);
             this.nAvgAwaitTime.TabIndex = 30;
@@ -257,7 +308,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(474, 356);
+            this.dataGridView1.Size = new System.Drawing.Size(553, 356);
             this.dataGridView1.TabIndex = 31;
             // 
             // tick
@@ -293,19 +344,20 @@
             this.act.HeaderText = "act";
             this.act.MinimumWidth = 8;
             this.act.Name = "act";
-            this.act.Width = 150;
+            this.act.Width = 75;
             // 
             // avgBusLoad
             // 
             this.avgBusLoad.HeaderText = "avgBusLoad";
             this.avgBusLoad.MinimumWidth = 8;
             this.avgBusLoad.Name = "avgBusLoad";
+            this.avgBusLoad.Width = 75;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1113, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.nAvgAwaitTime);
             this.Controls.Add(this.nBreackingChance);
@@ -328,6 +380,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbDeterm);
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
