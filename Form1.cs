@@ -18,7 +18,8 @@ namespace MMEP
         public Form1()
         {
             InitializeComponent();
-            bte = new BusTrafficEmulator(this.dataGridView1);
+            //bte = new BusTrafficEmulator(this.dataGridView1);
+            bte = new BusTrafficEmulator(this);
             bte.startData.InStock();
             bte.Reset();
 
@@ -59,6 +60,12 @@ namespace MMEP
             nBusMaxCnt.Value = bte.startData.BusMaxCnt;
             nBusMaxCapacity.Value = bte.startData.BusMaxCapacity;
             nBreackingChance.Value = bte.startData.BreakingСhance;
+
+            progressBarA.Value = 0;
+            progressBarB.Value = 0;
+            progressBarC.Value = 0;
+
+            nAvgAwaitTime.Value = 0;
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -67,7 +74,14 @@ namespace MMEP
                 bte.Reset();
                 dataGridView1.Rows.Clear();
                 StartDataGUIEnabled(true);
+                FormReset();
                 return;
+            }
+
+            if (e.Alt && e.KeyCode == Keys.S)
+            {
+                bte.startData.InStock();
+                FormReset();
             }
 
             switch (e.KeyCode)
@@ -89,7 +103,8 @@ namespace MMEP
                     }
                     break;
             }
-        }
+            nDelay.Value = bte.PauseInterval;
+        }//KeyUp
 
         //protected override void OnPaint(PaintEventArgs e)
         //{

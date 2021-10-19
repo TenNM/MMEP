@@ -160,13 +160,33 @@ namespace MMEP
                 //    AvgBusLoad()
                 //);
                 //Form1.data
-                if(dataOutput is DataGridView)
+                //if(dataOutput is DataGridView)
+                //{
+                //    DataGridView d = dataOutput as DataGridView;
+                //    if (null == d) continue;
+                //    d.Invoke(
+                //            (MethodInvoker)delegate {
+                //                d.Rows.Add(
+                //                    tick,
+                //                    listStations[0].usersQueue.Count,
+                //                    listStations[1].usersQueue.Count,
+                //                    listStations[2].usersQueue.Count,
+                //                    act,
+                //                    AvgBusLoad()
+                //                );
+                //            }
+                //        );
+
+                //}
+                if (dataOutput is Form1)
                 {
-                    DataGridView d = dataOutput as DataGridView;
-                    if (null == d) continue;
-                    d.Invoke(
-                            (MethodInvoker)delegate {
-                                d.Rows.Add(
+                    Form1 f = dataOutput as Form1;
+                    if (null == f) continue;
+
+                    f.dataGridView1.Invoke(
+                            (MethodInvoker)delegate
+                            {
+                                f.dataGridView1.Rows.Add(
                                     tick,
                                     listStations[0].usersQueue.Count,
                                     listStations[1].usersQueue.Count,
@@ -176,8 +196,32 @@ namespace MMEP
                                 );
                             }
                         );
-                    
-                }
+
+                    int value = 0;
+                    ProgressBar[] pbArr = { f.progressBarA, f.progressBarB, f.progressBarC };
+
+                    for(int i = 0; i < listStations.Count; ++i)
+                    {
+                        if (listStations[i].usersQueue.Count < 100)
+                        {
+                            value = listStations[i].usersQueue.Count;
+                        }
+                        else value = 100;
+                        f.progressBarA.Invoke(
+                                (MethodInvoker)delegate
+                                {
+                                    pbArr[i].Value = value;
+                                }
+                            );
+                    }
+                    //-----
+                    f.nAvgAwaitTime.Invoke(
+                            (MethodInvoker)delegate
+                            {
+                                f.nAvgAwaitTime.Value = (decimal)outputData.CalcAvgAwaitMinutes();
+                            }
+                        );
+                }//if Form
                 MakeTick();
                 await Task.Delay(pauseInterval);
             }

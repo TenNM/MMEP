@@ -56,6 +56,14 @@
             this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.progressBarA = new System.Windows.Forms.ProgressBar();
+            this.progressBarB = new System.Windows.Forms.ProgressBar();
+            this.progressBarC = new System.Windows.Forms.ProgressBar();
+            this.nDelay = new System.Windows.Forms.NumericUpDown();
+            this.labelDelay = new System.Windows.Forms.Label();
+            this.labelStA = new System.Windows.Forms.Label();
+            this.labelStB = new System.Windows.Forms.Label();
+            this.labelStC = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTBC)).BeginInit();
@@ -67,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBreackingChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nAvgAwaitTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // cbDeterm
@@ -287,7 +296,13 @@
             0,
             0,
             0});
+            this.nAvgAwaitTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.nAvgAwaitTime.Name = "nAvgAwaitTime";
+            this.nAvgAwaitTime.ReadOnly = true;
             this.nAvgAwaitTime.Size = new System.Drawing.Size(75, 26);
             this.nAvgAwaitTime.TabIndex = 30;
             // 
@@ -305,6 +320,7 @@
             this.avgBusLoad});
             this.dataGridView1.Location = new System.Drawing.Point(254, 50);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
@@ -316,6 +332,7 @@
             this.tick.HeaderText = "tick";
             this.tick.MinimumWidth = 8;
             this.tick.Name = "tick";
+            this.tick.ReadOnly = true;
             this.tick.Width = 50;
             // 
             // a
@@ -323,6 +340,7 @@
             this.a.HeaderText = "a";
             this.a.MinimumWidth = 8;
             this.a.Name = "a";
+            this.a.ReadOnly = true;
             this.a.Width = 50;
             // 
             // b
@@ -330,6 +348,7 @@
             this.b.HeaderText = "b";
             this.b.MinimumWidth = 8;
             this.b.Name = "b";
+            this.b.ReadOnly = true;
             this.b.Width = 50;
             // 
             // c
@@ -337,6 +356,7 @@
             this.c.HeaderText = "c";
             this.c.MinimumWidth = 8;
             this.c.Name = "c";
+            this.c.ReadOnly = true;
             this.c.Width = 50;
             // 
             // act
@@ -344,6 +364,7 @@
             this.act.HeaderText = "act";
             this.act.MinimumWidth = 8;
             this.act.Name = "act";
+            this.act.ReadOnly = true;
             this.act.Width = 75;
             // 
             // avgBusLoad
@@ -351,13 +372,96 @@
             this.avgBusLoad.HeaderText = "avgBusLoad";
             this.avgBusLoad.MinimumWidth = 8;
             this.avgBusLoad.Name = "avgBusLoad";
+            this.avgBusLoad.ReadOnly = true;
             this.avgBusLoad.Width = 75;
+            // 
+            // progressBarA
+            // 
+            this.progressBarA.Location = new System.Drawing.Point(870, 50);
+            this.progressBarA.Maximum = 300;
+            this.progressBarA.Name = "progressBarA";
+            this.progressBarA.Size = new System.Drawing.Size(231, 23);
+            this.progressBarA.TabIndex = 32;
+            // 
+            // progressBarB
+            // 
+            this.progressBarB.Location = new System.Drawing.Point(870, 80);
+            this.progressBarB.Maximum = 300;
+            this.progressBarB.Name = "progressBarB";
+            this.progressBarB.Size = new System.Drawing.Size(231, 23);
+            this.progressBarB.TabIndex = 33;
+            // 
+            // progressBarC
+            // 
+            this.progressBarC.Location = new System.Drawing.Point(870, 110);
+            this.progressBarC.Maximum = 300;
+            this.progressBarC.Name = "progressBarC";
+            this.progressBarC.Size = new System.Drawing.Size(231, 23);
+            this.progressBarC.TabIndex = 34;
+            // 
+            // nDelay
+            // 
+            this.nDelay.Enabled = false;
+            this.nDelay.Location = new System.Drawing.Point(302, 13);
+            this.nDelay.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nDelay.Name = "nDelay";
+            this.nDelay.ReadOnly = true;
+            this.nDelay.Size = new System.Drawing.Size(136, 26);
+            this.nDelay.TabIndex = 35;
+            // 
+            // labelDelay
+            // 
+            this.labelDelay.AutoSize = true;
+            this.labelDelay.Location = new System.Drawing.Point(250, 13);
+            this.labelDelay.Name = "labelDelay";
+            this.labelDelay.Size = new System.Drawing.Size(46, 20);
+            this.labelDelay.TabIndex = 36;
+            this.labelDelay.Text = "delay";
+            // 
+            // labelStA
+            // 
+            this.labelStA.AutoSize = true;
+            this.labelStA.Location = new System.Drawing.Point(818, 50);
+            this.labelStA.Name = "labelStA";
+            this.labelStA.Size = new System.Drawing.Size(33, 20);
+            this.labelStA.TabIndex = 37;
+            this.labelStA.Text = "stA";
+            // 
+            // labelStB
+            // 
+            this.labelStB.AutoSize = true;
+            this.labelStB.Location = new System.Drawing.Point(818, 80);
+            this.labelStB.Name = "labelStB";
+            this.labelStB.Size = new System.Drawing.Size(33, 20);
+            this.labelStB.TabIndex = 38;
+            this.labelStB.Text = "stB";
+            // 
+            // labelStC
+            // 
+            this.labelStC.AutoSize = true;
+            this.labelStC.Location = new System.Drawing.Point(818, 110);
+            this.labelStC.Name = "labelStC";
+            this.labelStC.Size = new System.Drawing.Size(33, 20);
+            this.labelStC.TabIndex = 39;
+            this.labelStC.Text = "stC";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 450);
+            this.Controls.Add(this.labelStC);
+            this.Controls.Add(this.labelStB);
+            this.Controls.Add(this.labelStA);
+            this.Controls.Add(this.labelDelay);
+            this.Controls.Add(this.nDelay);
+            this.Controls.Add(this.progressBarC);
+            this.Controls.Add(this.progressBarB);
+            this.Controls.Add(this.progressBarA);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.nAvgAwaitTime);
             this.Controls.Add(this.nBreackingChance);
@@ -397,6 +501,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nBreackingChance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nAvgAwaitTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nDelay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,14 +529,22 @@
         private System.Windows.Forms.NumericUpDown nBusMaxCnt;
         private System.Windows.Forms.NumericUpDown nBusMaxCapacity;
         private System.Windows.Forms.NumericUpDown nBreackingChance;
-        private System.Windows.Forms.NumericUpDown nAvgAwaitTime;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        internal System.Windows.Forms.NumericUpDown nAvgAwaitTime;
+        internal System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tick;
         private System.Windows.Forms.DataGridViewTextBoxColumn a;
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.DataGridViewTextBoxColumn c;
         private System.Windows.Forms.DataGridViewTextBoxColumn act;
         private System.Windows.Forms.DataGridViewTextBoxColumn avgBusLoad;
+        internal System.Windows.Forms.ProgressBar progressBarA;
+        internal System.Windows.Forms.ProgressBar progressBarB;
+        internal System.Windows.Forms.ProgressBar progressBarC;
+        private System.Windows.Forms.NumericUpDown nDelay;
+        private System.Windows.Forms.Label labelDelay;
+        private System.Windows.Forms.Label labelStA;
+        private System.Windows.Forms.Label labelStB;
+        private System.Windows.Forms.Label labelStC;
     }
 }
 
