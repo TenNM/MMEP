@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,7 @@ namespace MMEP
         internal OutputData outputData;
         Random rand;
 
-        uint tick;
+        internal uint tick;
         internal List<Bus> listBuses;
         uint totalBusSpawned;
         internal List<Station> listStations;
@@ -150,34 +151,7 @@ namespace MMEP
                     await Task.Delay(100);
                     continue;
                 }
-                //Console.WriteLine(
-                //    "t {0, -10}a {1, -10}b {2, -10}c {3, -10} {4, -10}avgBusLoad {5, -10}",
-                //    tick,
-                //    listStations[0].usersQueue.Count,
-                //    listStations[1].usersQueue.Count,
-                //    listStations[2].usersQueue.Count,
-                //    act,
-                //    AvgBusLoad()
-                //);
-                //Form1.data
-                //if(dataOutput is DataGridView)
-                //{
-                //    DataGridView d = dataOutput as DataGridView;
-                //    if (null == d) continue;
-                //    d.Invoke(
-                //            (MethodInvoker)delegate {
-                //                d.Rows.Add(
-                //                    tick,
-                //                    listStations[0].usersQueue.Count,
-                //                    listStations[1].usersQueue.Count,
-                //                    listStations[2].usersQueue.Count,
-                //                    act,
-                //                    AvgBusLoad()
-                //                );
-                //            }
-                //        );
-
-                //}
+                
                 if (dataOutput is Form1)
                 {
                     Form1 f = dataOutput as Form1;
@@ -196,7 +170,7 @@ namespace MMEP
                                 );
                             }
                         );
-
+                    //-----
                     int value = 0;
                     ProgressBar[] pbArr = { f.progressBarA, f.progressBarB, f.progressBarC };
 
@@ -220,6 +194,43 @@ namespace MMEP
                             {
                                 f.nAvgAwaitTime.Value = (decimal)outputData.CalcAvgAwaitMinutes();
                             }
+                        );
+                    //-----
+                    f.Invoke(
+                        (MethodInvoker)delegate
+                        {
+                            Graphics g = Graphics.FromHwnd(f.Handle);
+                            Color cl = Color.FromArgb(50, 50, 50);
+                            Pen pen = new Pen(cl, 3);
+
+                            Point a = new Point(550, 150);//left  A
+                            Point b = new Point(700, 150);//right B
+                            Point c = new Point(625, 250);//down  C
+
+                            foreach (Bus bus in listBuses)
+                            {
+                                Point p = new Point();
+                                switch (bus.nextStation)
+                                {
+                                    case 'A':
+                                        {
+                                            p = Form1.Tween(c, a, (bus.arriveTick - tick) / bus.arriveTick);
+                                        }
+                                        break;
+                                    case 'B':
+                                        {
+                                            p = Form1.Tween(a, b, (bus.arriveTick - tick) / bus.arriveTick);                                        
+                                        }
+                                        break;
+                                    case 'C':
+                                        {
+                                            p = Form1.Tween(b, c, (bus.arriveTick - tick) / bus.arriveTick);
+                                        }
+                                        break;
+                                }//sw
+                                Form1.DrawPointMarker(g, pen, p);
+                            }//for
+                        }//delegate
                         );
                 }//if Form
                 MakeTick();

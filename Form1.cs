@@ -12,8 +12,6 @@ namespace MMEP
 {
     public partial class Form1 : Form
     {
-        //private Graphics _g;
-        //private Pen _pen;
         BusTrafficEmulator bte;
         public Form1()
         {
@@ -66,6 +64,7 @@ namespace MMEP
             progressBarC.Value = 0;
 
             nAvgAwaitTime.Value = 0;
+            nDelay.Value = bte.PauseInterval;
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -106,18 +105,32 @@ namespace MMEP
             nDelay.Value = bte.PauseInterval;
         }//KeyUp
 
-        //protected override void OnPaint(PaintEventArgs e)
-        //{
-        //    base.OnPaint(e);
-        //    _g = CreateGraphics();
-        //    Color c = Color.FromArgb(50, 50, 50);
-        //    _pen = new Pen(c, 5);
+        internal static Point Tween(Point a,  Point b, float t)
+        {
+            return new Point(
+                (int)(a.X * (1 - t) + b.X * t),
+                (int)(a.Y * (1 - t) + b.Y * t)
+                );
+        }
+        internal static void DrawPointMarker(Graphics g, Pen pen, PointF p)
+        {
+            g.DrawLine(pen, p.X, p.Y - 10, p.X, p.Y + 10);//vert
+            g.DrawLine(pen, p.X - 10, p.Y, p.X + 10, p.Y);//hor
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Color cl = Color.FromArgb(50, 50, 50);
+            Pen pen = new Pen(cl, 3);
 
-        //    Point p1 = new Point(0, 0);
-        //    Point p2 = new Point(100, 100);
-        //    _g.DrawLine(_pen, p1, p2);
+            Point a = new Point(550, 150);//left  A
+            Point b = new Point(700, 150);//right B
+            Point c = new Point(625, 250);//down  C
 
-        //    _g.Dispose();
-        //}
+            e.Graphics.DrawLine(pen, a, b);
+            e.Graphics.DrawLine(pen, b, c);
+            e.Graphics.DrawLine(pen, c, a);
+
+        }//onPaint
     }
 }
