@@ -112,25 +112,11 @@ namespace MMEP
                 (int)(a.Y * (1 - t) + b.Y * t)
                 );
         }
-        internal static void DrawPointMarker(Graphics g, Pen pen, PointF p)
+        internal static void DrawPointMarker(Graphics g, Pen pen, Point p)
         {
             g.DrawLine(pen, p.X, p.Y - 10, p.X, p.Y + 10);//vert
             g.DrawLine(pen, p.X - 10, p.Y, p.X + 10, p.Y);//hor
         }
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Color cl = Color.FromArgb(50, 50, 50);
-            Pen pen = new Pen(cl, 3);
-
-            Point a = new Point(550, 150);//left  A
-            Point b = new Point(700, 150);//right B
-            Point c = new Point(625, 250);//down  C
-
-            e.Graphics.DrawLine(pen, a, b);
-            e.Graphics.DrawLine(pen, b, c);
-            e.Graphics.DrawLine(pen, c, a);
-
-        }//onPaint
+        
     }
 }

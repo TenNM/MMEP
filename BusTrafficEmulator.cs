@@ -63,6 +63,7 @@ namespace MMEP
             outputData.Reset();
 
             justDoIt = true;
+            isPause = false;
         }//reset
         internal void MakeTick()
         {
@@ -106,7 +107,7 @@ namespace MMEP
                     if ( rand.Next(101) > startData.BreakingСhance )
                     {
                         b.Drain();
-                        outputData._sumBusAwait += b.PickUp(stNow);
+                        outputData._sumBusAwait += b.PickUp(stNow, tick);
                     }
                     else
                     {
@@ -202,29 +203,40 @@ namespace MMEP
                             Graphics g = Graphics.FromHwnd(f.Handle);
                             Color cl = Color.FromArgb(50, 50, 50);
                             Pen pen = new Pen(cl, 3);
+                            SolidBrush sb = new SolidBrush(f.BackColor);
 
                             Point a = new Point(550, 150);//left  A
                             Point b = new Point(700, 150);//right B
                             Point c = new Point(625, 250);//down  C
 
+                            g.FillRectangle(sb, a.X - 20, a.Y - 20, b.X - a.X + 40, c.Y - a.Y + 40);
+
+                            g.DrawLine(pen, a, b);
+                            g.DrawLine(pen, b, c);
+                            g.DrawLine(pen, c, a);
+
                             foreach (Bus bus in listBuses)
                             {
+                                if (!bus.isWorks) continue;
+
                                 Point p = new Point();
+                                //float t = (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+                                float t = (float)(tick - bus.startTick) / (bus.arriveTick - bus.startTick);
                                 switch (bus.nextStation)
                                 {
                                     case 'A':
                                         {
-                                            p = Form1.Tween(c, a, (bus.arriveTick - tick) / bus.arriveTick);
+                                            p = Form1.Tween(c, a, t);
                                         }
                                         break;
                                     case 'B':
                                         {
-                                            p = Form1.Tween(a, b, (bus.arriveTick - tick) / bus.arriveTick);                                        
+                                            p = Form1.Tween(a, b, t);                                        
                                         }
                                         break;
                                     case 'C':
                                         {
-                                            p = Form1.Tween(b, c, (bus.arriveTick - tick) / bus.arriveTick);
+                                            p = Form1.Tween(b, c, t);
                                         }
                                         break;
                                 }//sw
@@ -285,6 +297,7 @@ namespace MMEP
         internal uint maxCapacity;
         internal uint u1;
         internal uint u2;
+        internal uint startTick;
         internal uint arriveTick;
         internal char nextStation;
         internal Bus(uint maxCapacity, char nextStation, uint arriveTick)
@@ -309,10 +322,11 @@ namespace MMEP
             for (int i = 0; i < u1; ++i) toStation.usersQueue.Enqueue(new User(1));
             return temp;
         }
-        internal uint PickUp(Station st)
+        internal uint PickUp(Station st, uint startTick)
         {
             if (null == st) return 0;
             uint tempWaitSum = 0;
+            this.startTick = startTick;
 
             while(u1 + u2 < maxCapacity && st.usersQueue.Count > 0)
             {
