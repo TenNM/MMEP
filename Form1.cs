@@ -63,6 +63,10 @@ namespace MMEP
             progressBarB.Value = 0;
             progressBarC.Value = 0;
 
+            nNearBarA.Value = 0;
+            nNearBarB.Value = 0;
+            nNearBarC.Value = 0;
+
             nAvgAwaitTime.Value = 0;
             nDelay.Value = bte.PauseInterval;
         }

@@ -158,7 +158,8 @@ namespace MMEP
                     Form1 f = dataOutput as Form1;
                     if (null == f) continue;
 
-                    f.dataGridView1.Invoke(
+                    //f.dataGridView1.Invoke(
+                    f.Invoke(
                             (MethodInvoker)delegate
                             {
                                 f.dataGridView1.Rows.Add(
@@ -174,23 +175,31 @@ namespace MMEP
                     //-----
                     int value = 0;
                     ProgressBar[] pbArr = { f.progressBarA, f.progressBarB, f.progressBarC };
+                    NumericUpDown[] nudArr = { f.nNearBarA, f.nNearBarB, f.nNearBarC };
 
-                    for(int i = 0; i < listStations.Count; ++i)
+                    for(int i = 0; i < 3; ++i)
                     {
-                        if (listStations[i].usersQueue.Count < 100)
+                        //nudArr[i].Value = listStations[i].usersQueue.Count;
+
+                        if (listStations[i].usersQueue.Count < pbArr[i].Maximum)
                         {
                             value = listStations[i].usersQueue.Count;
                         }
-                        else value = 100;
-                        f.progressBarA.Invoke(
+                        else value = pbArr[i].Maximum;
+
+                        //f.progressBarA.Invoke(
+                        //pbArr[i].Invoke(
+                        f.Invoke(
                                 (MethodInvoker)delegate
                                 {
                                     pbArr[i].Value = value;
+                                    nudArr[i].Value = listStations[i].usersQueue.Count;
                                 }
                             );
                     }
                     //-----
-                    f.nAvgAwaitTime.Invoke(
+                    //f.nAvgAwaitTime.Invoke(
+                    f.Invoke(
                             (MethodInvoker)delegate
                             {
                                 f.nAvgAwaitTime.Value = (decimal)outputData.CalcAvgAwaitMinutes();

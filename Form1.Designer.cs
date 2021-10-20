@@ -67,6 +67,9 @@
             this.labelStAA = new System.Windows.Forms.Label();
             this.labelStBB = new System.Windows.Forms.Label();
             this.labelStCC = new System.Windows.Forms.Label();
+            this.nNearBarA = new System.Windows.Forms.NumericUpDown();
+            this.nNearBarB = new System.Windows.Forms.NumericUpDown();
+            this.nNearBarC = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTBC)).BeginInit();
@@ -79,6 +82,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nAvgAwaitTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNearBarA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNearBarB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNearBarC)).BeginInit();
             this.SuspendLayout();
             // 
             // cbDeterm
@@ -380,26 +386,26 @@
             // 
             // progressBarA
             // 
-            this.progressBarA.Location = new System.Drawing.Point(870, 50);
+            this.progressBarA.Location = new System.Drawing.Point(935, 50);
             this.progressBarA.Maximum = 300;
             this.progressBarA.Name = "progressBarA";
-            this.progressBarA.Size = new System.Drawing.Size(231, 23);
+            this.progressBarA.Size = new System.Drawing.Size(166, 23);
             this.progressBarA.TabIndex = 32;
             // 
             // progressBarB
             // 
-            this.progressBarB.Location = new System.Drawing.Point(870, 80);
+            this.progressBarB.Location = new System.Drawing.Point(935, 80);
             this.progressBarB.Maximum = 300;
             this.progressBarB.Name = "progressBarB";
-            this.progressBarB.Size = new System.Drawing.Size(231, 23);
+            this.progressBarB.Size = new System.Drawing.Size(166, 23);
             this.progressBarB.TabIndex = 33;
             // 
             // progressBarC
             // 
-            this.progressBarC.Location = new System.Drawing.Point(870, 110);
+            this.progressBarC.Location = new System.Drawing.Point(935, 110);
             this.progressBarC.Maximum = 300;
             this.progressBarC.Name = "progressBarC";
-            this.progressBarC.Size = new System.Drawing.Size(231, 23);
+            this.progressBarC.Size = new System.Drawing.Size(166, 23);
             this.progressBarC.TabIndex = 34;
             // 
             // nDelay
@@ -479,11 +485,53 @@
             this.labelStCC.TabIndex = 42;
             this.labelStCC.Text = "C";
             // 
+            // nNearBarA
+            // 
+            this.nNearBarA.Location = new System.Drawing.Point(854, 50);
+            this.nNearBarA.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nNearBarA.Name = "nNearBarA";
+            this.nNearBarA.ReadOnly = true;
+            this.nNearBarA.Size = new System.Drawing.Size(75, 26);
+            this.nNearBarA.TabIndex = 43;
+            // 
+            // nNearBarB
+            // 
+            this.nNearBarB.Location = new System.Drawing.Point(854, 80);
+            this.nNearBarB.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nNearBarB.Name = "nNearBarB";
+            this.nNearBarB.ReadOnly = true;
+            this.nNearBarB.Size = new System.Drawing.Size(75, 26);
+            this.nNearBarB.TabIndex = 44;
+            // 
+            // nNearBarC
+            // 
+            this.nNearBarC.Location = new System.Drawing.Point(854, 110);
+            this.nNearBarC.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nNearBarC.Name = "nNearBarC";
+            this.nNearBarC.ReadOnly = true;
+            this.nNearBarC.Size = new System.Drawing.Size(75, 26);
+            this.nNearBarC.TabIndex = 45;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 450);
+            this.Controls.Add(this.nNearBarC);
+            this.Controls.Add(this.nNearBarB);
+            this.Controls.Add(this.nNearBarA);
             this.Controls.Add(this.labelStCC);
             this.Controls.Add(this.labelStBB);
             this.Controls.Add(this.labelStAA);
@@ -535,6 +583,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nAvgAwaitTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNearBarA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNearBarB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nNearBarC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,6 +632,9 @@
         private System.Windows.Forms.Label labelStAA;
         private System.Windows.Forms.Label labelStBB;
         private System.Windows.Forms.Label labelStCC;
+        internal System.Windows.Forms.NumericUpDown nNearBarA;
+        internal System.Windows.Forms.NumericUpDown nNearBarB;
+        internal System.Windows.Forms.NumericUpDown nNearBarC;
     }
 }
 
