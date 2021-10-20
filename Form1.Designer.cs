@@ -50,6 +50,12 @@
             this.nBreackingChance = new System.Windows.Forms.NumericUpDown();
             this.nAvgAwaitTime = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progressBarA = new System.Windows.Forms.ProgressBar();
             this.progressBarB = new System.Windows.Forms.ProgressBar();
             this.progressBarC = new System.Windows.Forms.ProgressBar();
@@ -58,12 +64,9 @@
             this.labelStA = new System.Windows.Forms.Label();
             this.labelStB = new System.Windows.Forms.Label();
             this.labelStC = new System.Windows.Forms.Label();
-            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelStAA = new System.Windows.Forms.Label();
+            this.labelStBB = new System.Windows.Forms.Label();
+            this.labelStCC = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTBC)).BeginInit();
@@ -327,6 +330,54 @@
             this.dataGridView1.Size = new System.Drawing.Size(553, 356);
             this.dataGridView1.TabIndex = 31;
             // 
+            // tick
+            // 
+            this.tick.HeaderText = "tick";
+            this.tick.MinimumWidth = 8;
+            this.tick.Name = "tick";
+            this.tick.ReadOnly = true;
+            this.tick.Width = 50;
+            // 
+            // a
+            // 
+            this.a.HeaderText = "a";
+            this.a.MinimumWidth = 8;
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            this.a.Width = 50;
+            // 
+            // b
+            // 
+            this.b.HeaderText = "b";
+            this.b.MinimumWidth = 8;
+            this.b.Name = "b";
+            this.b.ReadOnly = true;
+            this.b.Width = 50;
+            // 
+            // c
+            // 
+            this.c.HeaderText = "c";
+            this.c.MinimumWidth = 8;
+            this.c.Name = "c";
+            this.c.ReadOnly = true;
+            this.c.Width = 50;
+            // 
+            // act
+            // 
+            this.act.HeaderText = "act";
+            this.act.MinimumWidth = 8;
+            this.act.Name = "act";
+            this.act.ReadOnly = true;
+            this.act.Width = 75;
+            // 
+            // avgBusLoad
+            // 
+            this.avgBusLoad.HeaderText = "avgBusLoad";
+            this.avgBusLoad.MinimumWidth = 8;
+            this.avgBusLoad.Name = "avgBusLoad";
+            this.avgBusLoad.ReadOnly = true;
+            this.avgBusLoad.Width = 50;
+            // 
             // progressBarA
             // 
             this.progressBarA.Location = new System.Drawing.Point(870, 50);
@@ -401,59 +452,41 @@
             this.labelStC.TabIndex = 39;
             this.labelStC.Text = "stC";
             // 
-            // tick
+            // labelStAA
             // 
-            this.tick.HeaderText = "tick";
-            this.tick.MinimumWidth = 8;
-            this.tick.Name = "tick";
-            this.tick.ReadOnly = true;
-            this.tick.Width = 50;
+            this.labelStAA.AutoSize = true;
+            this.labelStAA.Location = new System.Drawing.Point(818, 190);
+            this.labelStAA.Name = "labelStAA";
+            this.labelStAA.Size = new System.Drawing.Size(20, 20);
+            this.labelStAA.TabIndex = 40;
+            this.labelStAA.Text = "A";
             // 
-            // a
+            // labelStBB
             // 
-            this.a.HeaderText = "a";
-            this.a.MinimumWidth = 8;
-            this.a.Name = "a";
-            this.a.ReadOnly = true;
-            this.a.Width = 50;
+            this.labelStBB.AutoSize = true;
+            this.labelStBB.Location = new System.Drawing.Point(1047, 190);
+            this.labelStBB.Name = "labelStBB";
+            this.labelStBB.Size = new System.Drawing.Size(20, 20);
+            this.labelStBB.TabIndex = 41;
+            this.labelStBB.Text = "B";
             // 
-            // b
+            // labelStCC
             // 
-            this.b.HeaderText = "b";
-            this.b.MinimumWidth = 8;
-            this.b.Name = "b";
-            this.b.ReadOnly = true;
-            this.b.Width = 50;
-            // 
-            // c
-            // 
-            this.c.HeaderText = "c";
-            this.c.MinimumWidth = 8;
-            this.c.Name = "c";
-            this.c.ReadOnly = true;
-            this.c.Width = 50;
-            // 
-            // act
-            // 
-            this.act.HeaderText = "act";
-            this.act.MinimumWidth = 8;
-            this.act.Name = "act";
-            this.act.ReadOnly = true;
-            this.act.Width = 75;
-            // 
-            // avgBusLoad
-            // 
-            this.avgBusLoad.HeaderText = "avgBusLoad";
-            this.avgBusLoad.MinimumWidth = 8;
-            this.avgBusLoad.Name = "avgBusLoad";
-            this.avgBusLoad.ReadOnly = true;
-            this.avgBusLoad.Width = 50;
+            this.labelStCC.AutoSize = true;
+            this.labelStCC.Location = new System.Drawing.Point(931, 402);
+            this.labelStCC.Name = "labelStCC";
+            this.labelStCC.Size = new System.Drawing.Size(20, 20);
+            this.labelStCC.TabIndex = 42;
+            this.labelStCC.Text = "C";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1113, 450);
+            this.Controls.Add(this.labelStCC);
+            this.Controls.Add(this.labelStBB);
+            this.Controls.Add(this.labelStAA);
             this.Controls.Add(this.labelStC);
             this.Controls.Add(this.labelStB);
             this.Controls.Add(this.labelStA);
@@ -545,6 +578,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c;
         private System.Windows.Forms.DataGridViewTextBoxColumn act;
         private System.Windows.Forms.DataGridViewTextBoxColumn avgBusLoad;
+        private System.Windows.Forms.Label labelStAA;
+        private System.Windows.Forms.Label labelStBB;
+        private System.Windows.Forms.Label labelStCC;
     }
 }
 

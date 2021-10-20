@@ -24,7 +24,7 @@ namespace MMEP
 
         private bool justDoIt = true;
         private bool isPause = false;
-        private int pauseInterval = 1000;
+        private int pauseInterval = 0;
 
         private object dataOutput;
         internal int PauseInterval
@@ -202,7 +202,7 @@ namespace MMEP
                         {
                             Graphics g = Graphics.FromHwnd(f.Handle);
                             Color cl = Color.FromArgb(50, 50, 50);
-                            Pen pen = new Pen(cl, 3);
+                            Pen pen = new Pen(cl);
                             SolidBrush sb = new SolidBrush(f.BackColor);
 
                             Point a = new Point(550, 150);//left  A
