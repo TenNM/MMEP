@@ -109,7 +109,7 @@ namespace MMEP
             nDelay.Value = bte.PauseInterval;
         }//KeyUp
 
-        internal static Point Tween(Point a,  Point b, float t)
+        internal static Point Tween(Point a, Point b, float t)
         {
             return new Point(
                 (int)(a.X * (1 - t) + b.X * t),
