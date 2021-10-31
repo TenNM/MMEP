@@ -70,6 +70,8 @@
             this.nNearBarA = new System.Windows.Forms.NumericUpDown();
             this.nNearBarB = new System.Windows.Forms.NumericUpDown();
             this.nNearBarC = new System.Windows.Forms.NumericUpDown();
+            this.labelModelProgress = new System.Windows.Forms.Label();
+            this.pbModelProgress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTBC)).BeginInit();
@@ -524,11 +526,30 @@
             this.nNearBarC.Size = new System.Drawing.Size(75, 26);
             this.nNearBarC.TabIndex = 45;
             // 
+            // labelModelProgress
+            // 
+            this.labelModelProgress.AutoSize = true;
+            this.labelModelProgress.Location = new System.Drawing.Point(12, 451);
+            this.labelModelProgress.Name = "labelModelProgress";
+            this.labelModelProgress.Size = new System.Drawing.Size(42, 20);
+            this.labelModelProgress.TabIndex = 46;
+            this.labelModelProgress.Text = "label";
+            // 
+            // pbModelProgress
+            // 
+            this.pbModelProgress.Location = new System.Drawing.Point(154, 451);
+            this.pbModelProgress.Maximum = 300;
+            this.pbModelProgress.Name = "pbModelProgress";
+            this.pbModelProgress.Size = new System.Drawing.Size(947, 23);
+            this.pbModelProgress.TabIndex = 47;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 450);
+            this.ClientSize = new System.Drawing.Size(1113, 494);
+            this.Controls.Add(this.pbModelProgress);
+            this.Controls.Add(this.labelModelProgress);
             this.Controls.Add(this.nNearBarC);
             this.Controls.Add(this.nNearBarB);
             this.Controls.Add(this.nNearBarA);
@@ -635,6 +656,8 @@
         internal System.Windows.Forms.NumericUpDown nNearBarA;
         internal System.Windows.Forms.NumericUpDown nNearBarB;
         internal System.Windows.Forms.NumericUpDown nNearBarC;
+        private System.Windows.Forms.Label labelModelProgress;
+        internal System.Windows.Forms.ProgressBar pbModelProgress;
     }
 }
 

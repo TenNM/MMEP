@@ -62,6 +62,7 @@ namespace MMEP
             progressBarA.Value = 0;
             progressBarB.Value = 0;
             progressBarC.Value = 0;
+            pbModelProgress.Value = 0;
 
             nNearBarA.Value = 0;
             nNearBarB.Value = 0;
@@ -98,8 +99,11 @@ namespace MMEP
                     {
                         StartDataFromGUIToModel();
 
+                        var t = 15 * BusTrafficEmulator.ONEHOUR;
+                        pbModelProgress.Maximum = (int)t;
+
                         Task.Factory.StartNew(
-                        () => bte.SemiThreadMethod(15 * BusTrafficEmulator.ONEHOUR)
+                        () => bte.SemiThreadMethod(t)
                         );
 
                         StartDataGUIEnabled(false);

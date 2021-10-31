@@ -16,6 +16,7 @@ namespace MMEP
         Random rand;
 
         internal uint tick;
+        //internal uint ticksToWork;
         internal List<Bus> listBuses;
         uint totalBusSpawned;
         internal List<Station> listStations;
@@ -26,7 +27,7 @@ namespace MMEP
         private bool isPause = false;
         private int pauseInterval = 0;
 
-        private object dataOutput;
+        private Form1 form1;
         internal int PauseInterval
         {
             get { return pauseInterval; }
@@ -37,13 +38,13 @@ namespace MMEP
             }
         }
 
-        internal BusTrafficEmulator(object dataOutput)
+        internal BusTrafficEmulator(Form1 form1)
         {
             startData = new StartData();
             outputData = new OutputData();
             Reset();
 
-            this.dataOutput = dataOutput;
+            this.form1 = form1;
         }
         internal void Reset()
         {
@@ -64,6 +65,16 @@ namespace MMEP
 
             justDoIt = true;
             isPause = false;
+
+            //if (null != form1)
+            //{
+            //    form1.Invoke(
+            //                (MethodInvoker)delegate
+            //                {
+            //                    form1.pbModelProgress.Value = (int)ticksToWork;
+            //                }
+            //            );
+            //}
         }//reset
         internal void MakeTick()
         {
@@ -143,8 +154,9 @@ namespace MMEP
             return -1;
         }
         //-------------------------------
-        internal async void SemiThreadMethod(uint ticksToWork)//what about reset justDoIt?
+        internal async void SemiThreadMethod(uint ticksToWork)
         {
+            //this.ticksToWork = ticksToWork;
             while (justDoIt && tick < ticksToWork)
             {
                 if (isPause)
@@ -153,16 +165,13 @@ namespace MMEP
                     continue;
                 }
                 
-                if (dataOutput is Form1)
+                if (null != form1)
                 {
-                    Form1 f = dataOutput as Form1;
-                    if (null == f) continue;
 
-                    //f.dataGridView1.Invoke(
-                    f.Invoke(
+                    form1.Invoke(
                             (MethodInvoker)delegate
                             {
-                                f.dataGridView1.Rows.Add(
+                                form1.dataGridView1.Rows.Add(
                                     tick,
                                     listStations[0].usersQueue.Count,
                                     listStations[1].usersQueue.Count,
@@ -174,8 +183,8 @@ namespace MMEP
                         );
                     //-----
                     int value = 0;
-                    ProgressBar[] pbArr = { f.progressBarA, f.progressBarB, f.progressBarC };
-                    NumericUpDown[] nudArr = { f.nNearBarA, f.nNearBarB, f.nNearBarC };
+                    ProgressBar[] pbArr = { form1.progressBarA, form1.progressBarB, form1.progressBarC };
+                    NumericUpDown[] nudArr = { form1.nNearBarA, form1.nNearBarB, form1.nNearBarC };
 
                     for(int i = 0; i < 3; ++i)
                     {
@@ -189,7 +198,7 @@ namespace MMEP
 
                         //f.progressBarA.Invoke(
                         //pbArr[i].Invoke(
-                        f.Invoke(
+                        form1.Invoke(
                                 (MethodInvoker)delegate
                                 {
                                     pbArr[i].Value = value;
@@ -199,20 +208,23 @@ namespace MMEP
                     }
                     //-----
                     //f.nAvgAwaitTime.Invoke(
-                    f.Invoke(
-                            (MethodInvoker)delegate
-                            {
-                                f.nAvgAwaitTime.Value = (decimal)outputData.CalcAvgAwaitMinutes();
-                            }
-                        );
+                    //form1.Invoke(
+                    //        (MethodInvoker)delegate
+                    //        {
+                    //            form1.nAvgAwaitTime.Value = (decimal)outputData.CalcAvgAwaitMinutes();
+                    //        }
+                    //    );
                     //-----
-                    f.Invoke(
+                    form1.Invoke(
                         (MethodInvoker)delegate
                         {
-                            Graphics g = Graphics.FromHwnd(f.Handle);
+                            form1.nAvgAwaitTime.Value = (decimal)outputData.CalcAvgAwaitMinutes();
+                            form1.pbModelProgress.Value = (int)tick;
+
+                            Graphics g = Graphics.FromHwnd(form1.Handle);
                             Color cl = Color.FromArgb(50, 50, 50);
                             Pen pen = new Pen(cl);
-                            SolidBrush sb = new SolidBrush(f.BackColor);
+                            SolidBrush sb = new SolidBrush(form1.BackColor);
 
                             Point a = new Point(550, 150);//left  A
                             Point b = new Point(700, 150);//right B
@@ -251,6 +263,7 @@ namespace MMEP
                                 }//sw
                                 Form1.DrawPointMarker(g, pen, p);
                             }//for
+
                         }//delegate
                         );
                 }//if Form
