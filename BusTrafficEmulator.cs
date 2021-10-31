@@ -144,7 +144,8 @@ namespace MMEP
                     }
                 }//if
             }//forbus
-            tick++;
+            //tick++;
+            tick+=5;
         }//tick
         internal float AvgBusLoad()
         {
@@ -153,7 +154,20 @@ namespace MMEP
             if (listBuses.Count > 0) return sum / listBuses.Count;
             return -1;
         }
-        //-------------------------------
+        //-----------------------------------------
+        internal static Point Tween(Point a, Point b, float t)
+        {
+            return new Point(
+                (int)(a.X * (1 - t) + b.X * t),
+                (int)(a.Y * (1 - t) + b.Y * t)
+                );
+        }
+        internal static void DrawPointMarker(Graphics g, Pen pen, Point p)
+        {
+            g.DrawLine(pen, p.X, p.Y - 10, p.X, p.Y + 10);//vert
+            g.DrawLine(pen, p.X - 10, p.Y, p.X + 10, p.Y);//hor
+        }
+        //----------------------------------------
         internal async void SemiThreadMethod(uint ticksToWork)
         {
             //this.ticksToWork = ticksToWork;
@@ -225,12 +239,13 @@ namespace MMEP
                             Color cl = Color.FromArgb(50, 50, 50);
                             Pen pen = new Pen(cl);
                             SolidBrush sb = new SolidBrush(form1.BackColor);
+                            SolidBrush sbBlack = new SolidBrush(cl);
 
                             Point a = new Point(550, 150);//left  A
                             Point b = new Point(700, 150);//right B
                             Point c = new Point(625, 250);//down  C
 
-                            g.FillRectangle(sb, a.X - 20, a.Y - 20, b.X - a.X + 40, c.Y - a.Y + 40);
+                            g.FillRectangle(sb, a.X - 20, a.Y - 20, b.X - a.X + 45, c.Y - a.Y + 40);
 
                             g.DrawLine(pen, a, b);
                             g.DrawLine(pen, b, c);
@@ -241,27 +256,31 @@ namespace MMEP
                                 if (!bus.isWorks) continue;
 
                                 Point p = new Point();
-                                //float t = (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
                                 float t = (float)(tick - bus.startTick) / (bus.arriveTick - bus.startTick);
                                 switch (bus.nextStation)
                                 {
                                     case 'A':
                                         {
-                                            p = Form1.Tween(c, a, t);
+                                            p = Tween(c, a, t);
                                         }
                                         break;
                                     case 'B':
                                         {
-                                            p = Form1.Tween(a, b, t);                                        
+                                            p = Tween(a, b, t);                                        
                                         }
                                         break;
                                     case 'C':
                                         {
-                                            p = Form1.Tween(b, c, t);
+                                            p = Tween(b, c, t);
                                         }
                                         break;
                                 }//sw
-                                Form1.DrawPointMarker(g, pen, p);
+                                DrawPointMarker(g, pen, p);
+
+                                p.X += 5;
+                                p.Y += 5;
+
+                                g.DrawString((bus.u1 + bus.u2).ToString(), form1.Font, sbBlack, p);
                             }//for
 
                         }//delegate
