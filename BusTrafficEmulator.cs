@@ -84,16 +84,13 @@ namespace MMEP
             {
                 foreach(User u in s.usersQueue)
                 {
-                    //u.waitTime++;
                     u.waitTime += _dTick;
                 }
                 if (s.spawnAwait >= s.spawnRate)
                 {
-                    //s.SpawnUsers(startData.U1SpawnCnt, startData.U2SpawnCnt);
                     outputData._sumUsersInModel += s.SpawnUsers(startData.U1SpawnCnt, startData.U2SpawnCnt);
                     s.spawnAwait = 0;
                 }
-                //else s.spawnAwait++;
                 else s.spawnAwait += _dTick;
             }
 
@@ -108,7 +105,6 @@ namespace MMEP
                     Bus.busSpawnAwait = 0;
                     totalBusSpawned++;
                 }
-                //else Bus.busSpawnAwait++;
                 else Bus.busSpawnAwait += _dTick;
             }
 
@@ -127,7 +123,13 @@ namespace MMEP
                     {
                         act += "bus broken on " + b.nextStation + " (" + b.u1 + ' ' + b.u2 + ')';
                         b.TroubleDrain(stNow);
-                        b.isWorks = false;                      
+                        b.isWorks = false;
+                        form1.Invoke(
+                            (MethodInvoker)delegate
+                            {
+                                form1.nBusBrokenCnt.Value++;
+                            }
+                            );
                         continue;
                     }
                     

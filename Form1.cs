@@ -70,6 +70,8 @@ namespace MMEP
 
             nAvgAwaitTime.Value = 0;
             nDelay.Value = bte.PauseInterval;
+
+            nBusBrokenCnt.Value = 0;
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -90,8 +92,8 @@ namespace MMEP
 
             switch (e.KeyCode)
             {
-                case Keys.Oemplus: bte.PauseInterval += 250; break;
-                case Keys.OemMinus: bte.PauseInterval -= 250; break;
+                case Keys.Oemplus: bte.PauseInterval += 100; break;
+                case Keys.OemMinus: bte.PauseInterval -= 100; break;
                 case Keys.R: bte.Resume(); break;
                 case Keys.P: bte.Pause(); break;
                 case Keys.S: bte.Stop(); break;
