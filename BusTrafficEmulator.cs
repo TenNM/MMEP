@@ -16,6 +16,7 @@ namespace MMEP
         Random rand;
 
         internal uint tick;
+        internal uint _dTick = 17;
         //internal uint ticksToWork;
         internal List<Bus> listBuses;
         uint totalBusSpawned;
@@ -83,7 +84,8 @@ namespace MMEP
             {
                 foreach(User u in s.usersQueue)
                 {
-                    u.waitTime++;
+                    //u.waitTime++;
+                    u.waitTime += _dTick;
                 }
                 if (s.spawnAwait >= s.spawnRate)
                 {
@@ -91,10 +93,10 @@ namespace MMEP
                     outputData._sumUsersInModel += s.SpawnUsers(startData.U1SpawnCnt, startData.U2SpawnCnt);
                     s.spawnAwait = 0;
                 }
-                else s.spawnAwait++;
+                //else s.spawnAwait++;
+                else s.spawnAwait += _dTick;
             }
 
-            //if (listBuses.Count < startData.BusMaxCnt)//!!!!!!!
             if (
                 totalBusSpawned < startData.BusMaxCnt &&
                 listBuses.Count < startData.BusMaxCnt
@@ -106,7 +108,8 @@ namespace MMEP
                     Bus.busSpawnAwait = 0;
                     totalBusSpawned++;
                 }
-                else Bus.busSpawnAwait++;
+                //else Bus.busSpawnAwait++;
+                else Bus.busSpawnAwait += _dTick;
             }
 
             foreach (Bus b in listBuses)
@@ -145,7 +148,7 @@ namespace MMEP
                 }//if
             }//forbus
             //tick++;
-            tick+=5;
+            tick += _dTick;
         }//tick
         internal float AvgBusLoad()
         {
@@ -331,7 +334,7 @@ namespace MMEP
     }
     class Bus
     {
-        static internal uint busSpawnRate = 16*60;
+        static internal uint busSpawnRate = 15*60;
         static internal uint busSpawnAwait = 0;
 
         internal bool isWorks = true;

@@ -50,12 +50,6 @@
             this.nBreackingChance = new System.Windows.Forms.NumericUpDown();
             this.nAvgAwaitTime = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progressBarA = new System.Windows.Forms.ProgressBar();
             this.progressBarB = new System.Windows.Forms.ProgressBar();
             this.progressBarC = new System.Windows.Forms.ProgressBar();
@@ -72,6 +66,12 @@
             this.nNearBarC = new System.Windows.Forms.NumericUpDown();
             this.labelModelProgress = new System.Windows.Forms.Label();
             this.pbModelProgress = new System.Windows.Forms.ProgressBar();
+            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTBC)).BeginInit();
@@ -95,9 +95,9 @@
             this.cbDeterm.Enabled = false;
             this.cbDeterm.Location = new System.Drawing.Point(12, 12);
             this.cbDeterm.Name = "cbDeterm";
-            this.cbDeterm.Size = new System.Drawing.Size(85, 24);
+            this.cbDeterm.Size = new System.Drawing.Size(193, 24);
             this.cbDeterm.TabIndex = 0;
-            this.cbDeterm.Text = "determ";
+            this.cbDeterm.Text = "Детерминированная";
             this.cbDeterm.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -105,94 +105,94 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 20);
+            this.label1.Size = new System.Drawing.Size(209, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "stSpawnRate";
+            this.label1.Text = "Период появления людей";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 20);
+            this.label2.Size = new System.Drawing.Size(110, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = "tAB";
+            this.label2.Text = "t между A и B";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 20);
+            this.label3.Size = new System.Drawing.Size(110, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "tBC";
+            this.label3.Text = "t между B и C";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 20);
+            this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 8;
-            this.label4.Text = "tCA";
+            this.label4.Text = "t между C и A";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 170);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 20);
+            this.label5.Size = new System.Drawing.Size(181, 20);
             this.label5.TabIndex = 10;
-            this.label5.Text = "u1SpawnCnt";
+            this.label5.Text = "Прирост едущих 1 ост.";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 200);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 20);
+            this.label6.Size = new System.Drawing.Size(181, 20);
             this.label6.TabIndex = 12;
-            this.label6.Text = "u2SpawnCnt";
+            this.label6.Text = "Прирост едущих 2 ост.";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(12, 230);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 20);
+            this.label7.Size = new System.Drawing.Size(140, 20);
             this.label7.TabIndex = 14;
-            this.label7.Text = "busMaxCnt";
+            this.label7.Text = "Макс. число авто";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 260);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(125, 20);
+            this.label8.Size = new System.Drawing.Size(165, 20);
             this.label8.TabIndex = 16;
-            this.label8.Text = "busMaxCapacity";
+            this.label8.Text = "Макс. вместим. авто";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(12, 290);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(133, 20);
+            this.label9.Size = new System.Drawing.Size(179, 20);
             this.label9.TabIndex = 18;
-            this.label9.Text = "breackingChance";
+            this.label9.Text = "Шанс поломки авто, %";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(12, 380);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 20);
+            this.label10.Size = new System.Drawing.Size(238, 20);
             this.label10.TabIndex = 20;
-            this.label10.Text = "avgAwaitTime";
+            this.label10.Text = "Ср. t ожидания автобуса (мин)";
             // 
             // nStSpawnRate
             // 
-            this.nStSpawnRate.Location = new System.Drawing.Point(154, 50);
+            this.nStSpawnRate.Location = new System.Drawing.Point(195, 50);
             this.nStSpawnRate.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -204,7 +204,7 @@
             // 
             // nTAB
             // 
-            this.nTAB.Location = new System.Drawing.Point(154, 80);
+            this.nTAB.Location = new System.Drawing.Point(195, 80);
             this.nTAB.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -216,7 +216,7 @@
             // 
             // nTBC
             // 
-            this.nTBC.Location = new System.Drawing.Point(154, 110);
+            this.nTBC.Location = new System.Drawing.Point(195, 110);
             this.nTBC.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -228,7 +228,7 @@
             // 
             // nTCA
             // 
-            this.nTCA.Location = new System.Drawing.Point(154, 140);
+            this.nTCA.Location = new System.Drawing.Point(195, 140);
             this.nTCA.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -240,7 +240,7 @@
             // 
             // nU1SpawnCnt
             // 
-            this.nU1SpawnCnt.Location = new System.Drawing.Point(154, 170);
+            this.nU1SpawnCnt.Location = new System.Drawing.Point(195, 170);
             this.nU1SpawnCnt.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -252,7 +252,7 @@
             // 
             // nU2SpawnCnt
             // 
-            this.nU2SpawnCnt.Location = new System.Drawing.Point(154, 200);
+            this.nU2SpawnCnt.Location = new System.Drawing.Point(195, 200);
             this.nU2SpawnCnt.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -264,7 +264,7 @@
             // 
             // nBusMaxCnt
             // 
-            this.nBusMaxCnt.Location = new System.Drawing.Point(154, 230);
+            this.nBusMaxCnt.Location = new System.Drawing.Point(195, 230);
             this.nBusMaxCnt.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -276,7 +276,7 @@
             // 
             // nBusMaxCapacity
             // 
-            this.nBusMaxCapacity.Location = new System.Drawing.Point(154, 260);
+            this.nBusMaxCapacity.Location = new System.Drawing.Point(195, 260);
             this.nBusMaxCapacity.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -288,7 +288,7 @@
             // 
             // nBreackingChance
             // 
-            this.nBreackingChance.Location = new System.Drawing.Point(154, 290);
+            this.nBreackingChance.Location = new System.Drawing.Point(195, 290);
             this.nBreackingChance.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -301,7 +301,7 @@
             // nAvgAwaitTime
             // 
             this.nAvgAwaitTime.Enabled = false;
-            this.nAvgAwaitTime.Location = new System.Drawing.Point(154, 380);
+            this.nAvgAwaitTime.Location = new System.Drawing.Point(195, 403);
             this.nAvgAwaitTime.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -329,91 +329,43 @@
             this.c,
             this.act,
             this.avgBusLoad});
-            this.dataGridView1.Location = new System.Drawing.Point(254, 50);
+            this.dataGridView1.Location = new System.Drawing.Point(276, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(553, 356);
+            this.dataGridView1.Size = new System.Drawing.Size(531, 356);
             this.dataGridView1.TabIndex = 31;
-            // 
-            // tick
-            // 
-            this.tick.HeaderText = "tick";
-            this.tick.MinimumWidth = 8;
-            this.tick.Name = "tick";
-            this.tick.ReadOnly = true;
-            this.tick.Width = 50;
-            // 
-            // a
-            // 
-            this.a.HeaderText = "a";
-            this.a.MinimumWidth = 8;
-            this.a.Name = "a";
-            this.a.ReadOnly = true;
-            this.a.Width = 50;
-            // 
-            // b
-            // 
-            this.b.HeaderText = "b";
-            this.b.MinimumWidth = 8;
-            this.b.Name = "b";
-            this.b.ReadOnly = true;
-            this.b.Width = 50;
-            // 
-            // c
-            // 
-            this.c.HeaderText = "c";
-            this.c.MinimumWidth = 8;
-            this.c.Name = "c";
-            this.c.ReadOnly = true;
-            this.c.Width = 50;
-            // 
-            // act
-            // 
-            this.act.HeaderText = "act";
-            this.act.MinimumWidth = 8;
-            this.act.Name = "act";
-            this.act.ReadOnly = true;
-            this.act.Width = 75;
-            // 
-            // avgBusLoad
-            // 
-            this.avgBusLoad.HeaderText = "avgBusLoad";
-            this.avgBusLoad.MinimumWidth = 8;
-            this.avgBusLoad.Name = "avgBusLoad";
-            this.avgBusLoad.ReadOnly = true;
-            this.avgBusLoad.Width = 50;
             // 
             // progressBarA
             // 
-            this.progressBarA.Location = new System.Drawing.Point(935, 50);
+            this.progressBarA.Location = new System.Drawing.Point(989, 50);
             this.progressBarA.Maximum = 300;
             this.progressBarA.Name = "progressBarA";
-            this.progressBarA.Size = new System.Drawing.Size(166, 23);
+            this.progressBarA.Size = new System.Drawing.Size(112, 23);
             this.progressBarA.TabIndex = 32;
             // 
             // progressBarB
             // 
-            this.progressBarB.Location = new System.Drawing.Point(935, 80);
+            this.progressBarB.Location = new System.Drawing.Point(989, 80);
             this.progressBarB.Maximum = 300;
             this.progressBarB.Name = "progressBarB";
-            this.progressBarB.Size = new System.Drawing.Size(166, 23);
+            this.progressBarB.Size = new System.Drawing.Size(112, 23);
             this.progressBarB.TabIndex = 33;
             // 
             // progressBarC
             // 
-            this.progressBarC.Location = new System.Drawing.Point(935, 110);
+            this.progressBarC.Location = new System.Drawing.Point(989, 110);
             this.progressBarC.Maximum = 300;
             this.progressBarC.Name = "progressBarC";
-            this.progressBarC.Size = new System.Drawing.Size(166, 23);
+            this.progressBarC.Size = new System.Drawing.Size(112, 23);
             this.progressBarC.TabIndex = 34;
             // 
             // nDelay
             // 
             this.nDelay.Enabled = false;
-            this.nDelay.Location = new System.Drawing.Point(302, 13);
+            this.nDelay.Location = new System.Drawing.Point(440, 12);
             this.nDelay.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -427,38 +379,38 @@
             // labelDelay
             // 
             this.labelDelay.AutoSize = true;
-            this.labelDelay.Location = new System.Drawing.Point(250, 13);
+            this.labelDelay.Location = new System.Drawing.Point(272, 12);
             this.labelDelay.Name = "labelDelay";
-            this.labelDelay.Size = new System.Drawing.Size(46, 20);
+            this.labelDelay.Size = new System.Drawing.Size(154, 20);
             this.labelDelay.TabIndex = 36;
-            this.labelDelay.Text = "delay";
+            this.labelDelay.Text = "Доп. задержка (мс)";
             // 
             // labelStA
             // 
             this.labelStA.AutoSize = true;
             this.labelStA.Location = new System.Drawing.Point(818, 50);
             this.labelStA.Name = "labelStA";
-            this.labelStA.Size = new System.Drawing.Size(33, 20);
+            this.labelStA.Size = new System.Drawing.Size(106, 20);
             this.labelStA.TabIndex = 37;
-            this.labelStA.Text = "stA";
+            this.labelStA.Text = "Остановка A";
             // 
             // labelStB
             // 
             this.labelStB.AutoSize = true;
             this.labelStB.Location = new System.Drawing.Point(818, 80);
             this.labelStB.Name = "labelStB";
-            this.labelStB.Size = new System.Drawing.Size(33, 20);
+            this.labelStB.Size = new System.Drawing.Size(106, 20);
             this.labelStB.TabIndex = 38;
-            this.labelStB.Text = "stB";
+            this.labelStB.Text = "Остановка B";
             // 
             // labelStC
             // 
             this.labelStC.AutoSize = true;
             this.labelStC.Location = new System.Drawing.Point(818, 110);
             this.labelStC.Name = "labelStC";
-            this.labelStC.Size = new System.Drawing.Size(33, 20);
+            this.labelStC.Size = new System.Drawing.Size(106, 20);
             this.labelStC.TabIndex = 39;
-            this.labelStC.Text = "stC";
+            this.labelStC.Text = "Остановка C";
             // 
             // labelStAA
             // 
@@ -489,7 +441,7 @@
             // 
             // nNearBarA
             // 
-            this.nNearBarA.Location = new System.Drawing.Point(854, 50);
+            this.nNearBarA.Location = new System.Drawing.Point(926, 50);
             this.nNearBarA.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -497,12 +449,12 @@
             0});
             this.nNearBarA.Name = "nNearBarA";
             this.nNearBarA.ReadOnly = true;
-            this.nNearBarA.Size = new System.Drawing.Size(75, 26);
+            this.nNearBarA.Size = new System.Drawing.Size(59, 26);
             this.nNearBarA.TabIndex = 43;
             // 
             // nNearBarB
             // 
-            this.nNearBarB.Location = new System.Drawing.Point(854, 80);
+            this.nNearBarB.Location = new System.Drawing.Point(926, 80);
             this.nNearBarB.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -510,12 +462,12 @@
             0});
             this.nNearBarB.Name = "nNearBarB";
             this.nNearBarB.ReadOnly = true;
-            this.nNearBarB.Size = new System.Drawing.Size(75, 26);
+            this.nNearBarB.Size = new System.Drawing.Size(59, 26);
             this.nNearBarB.TabIndex = 44;
             // 
             // nNearBarC
             // 
-            this.nNearBarC.Location = new System.Drawing.Point(854, 110);
+            this.nNearBarC.Location = new System.Drawing.Point(926, 110);
             this.nNearBarC.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -523,7 +475,7 @@
             0});
             this.nNearBarC.Name = "nNearBarC";
             this.nNearBarC.ReadOnly = true;
-            this.nNearBarC.Size = new System.Drawing.Size(75, 26);
+            this.nNearBarC.Size = new System.Drawing.Size(59, 26);
             this.nNearBarC.TabIndex = 45;
             // 
             // labelModelProgress
@@ -531,17 +483,65 @@
             this.labelModelProgress.AutoSize = true;
             this.labelModelProgress.Location = new System.Drawing.Point(12, 451);
             this.labelModelProgress.Name = "labelModelProgress";
-            this.labelModelProgress.Size = new System.Drawing.Size(42, 20);
+            this.labelModelProgress.Size = new System.Drawing.Size(143, 20);
             this.labelModelProgress.TabIndex = 46;
-            this.labelModelProgress.Text = "label";
+            this.labelModelProgress.Text = "Прогресс модели";
             // 
             // pbModelProgress
             // 
-            this.pbModelProgress.Location = new System.Drawing.Point(154, 451);
+            this.pbModelProgress.Location = new System.Drawing.Point(161, 451);
             this.pbModelProgress.Maximum = 300;
             this.pbModelProgress.Name = "pbModelProgress";
-            this.pbModelProgress.Size = new System.Drawing.Size(947, 23);
+            this.pbModelProgress.Size = new System.Drawing.Size(940, 23);
             this.pbModelProgress.TabIndex = 47;
+            // 
+            // tick
+            // 
+            this.tick.HeaderText = "такт";
+            this.tick.MinimumWidth = 8;
+            this.tick.Name = "tick";
+            this.tick.ReadOnly = true;
+            this.tick.Width = 50;
+            // 
+            // a
+            // 
+            this.a.HeaderText = "людей на А";
+            this.a.MinimumWidth = 8;
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            this.a.Width = 50;
+            // 
+            // b
+            // 
+            this.b.HeaderText = "людей на B";
+            this.b.MinimumWidth = 8;
+            this.b.Name = "b";
+            this.b.ReadOnly = true;
+            this.b.Width = 50;
+            // 
+            // c
+            // 
+            this.c.HeaderText = "людей на C";
+            this.c.MinimumWidth = 8;
+            this.c.Name = "c";
+            this.c.ReadOnly = true;
+            this.c.Width = 50;
+            // 
+            // act
+            // 
+            this.act.HeaderText = "событие";
+            this.act.MinimumWidth = 8;
+            this.act.Name = "act";
+            this.act.ReadOnly = true;
+            this.act.Width = 75;
+            // 
+            // avgBusLoad
+            // 
+            this.avgBusLoad.HeaderText = "ср. загр. авто";
+            this.avgBusLoad.MinimumWidth = 8;
+            this.avgBusLoad.Name = "avgBusLoad";
+            this.avgBusLoad.ReadOnly = true;
+            this.avgBusLoad.Width = 50;
             // 
             // Form1
             // 
@@ -586,11 +586,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbDeterm);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ММПП, ТенНМ ПИ-41";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).EndInit();
@@ -644,12 +645,6 @@
         private System.Windows.Forms.Label labelStA;
         private System.Windows.Forms.Label labelStB;
         private System.Windows.Forms.Label labelStC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tick;
-        private System.Windows.Forms.DataGridViewTextBoxColumn a;
-        private System.Windows.Forms.DataGridViewTextBoxColumn b;
-        private System.Windows.Forms.DataGridViewTextBoxColumn c;
-        private System.Windows.Forms.DataGridViewTextBoxColumn act;
-        private System.Windows.Forms.DataGridViewTextBoxColumn avgBusLoad;
         private System.Windows.Forms.Label labelStAA;
         private System.Windows.Forms.Label labelStBB;
         private System.Windows.Forms.Label labelStCC;
@@ -658,6 +653,12 @@
         internal System.Windows.Forms.NumericUpDown nNearBarC;
         private System.Windows.Forms.Label labelModelProgress;
         internal System.Windows.Forms.ProgressBar pbModelProgress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tick;
+        private System.Windows.Forms.DataGridViewTextBoxColumn a;
+        private System.Windows.Forms.DataGridViewTextBoxColumn b;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c;
+        private System.Windows.Forms.DataGridViewTextBoxColumn act;
+        private System.Windows.Forms.DataGridViewTextBoxColumn avgBusLoad;
     }
 }
 

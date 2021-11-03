@@ -112,8 +112,5 @@ namespace MMEP
             }
             nDelay.Value = bte.PauseInterval;
         }//KeyUp
-
-        
-        
     }
 }
