@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,31 @@ namespace MMEP
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
+            if (e.Alt && e.KeyCode == Keys.F)
+            {
+                using (TextWriter tw = new StreamWriter("example.txt"))
+                {
+                    for (int r = 0; r < dataGridView1.Rows.Count - 1; r++)
+                    {
+                        for (int c = 0; c < dataGridView1.Columns.Count; c++)
+                        {
+                            //tw.Write($"{dataGridView1.Rows[r].Cells[c].Value.ToString()}");
+                            tw.Write(
+                                "{0} {1, -15}",
+                                dataGridView1.Rows[r].Cells[c].OwningColumn.Name,
+                                dataGridView1.Rows[r].Cells[c].Value.ToString()
+                                );
+
+                            //if (!(c == dataGridView1.Columns.Count - 1))
+                            //{
+                            //    tw.Write(",");
+                            //}
+                        }
+                        tw.WriteLine();
+                    }
+                }
+            }//if
+
             if (e.Alt && e.KeyCode == Keys.R)
             {
                 bte.Reset();

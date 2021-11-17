@@ -50,12 +50,6 @@
             this.nBreackingChance = new System.Windows.Forms.NumericUpDown();
             this.nAvgAwaitTime = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progressBarA = new System.Windows.Forms.ProgressBar();
             this.progressBarB = new System.Windows.Forms.ProgressBar();
             this.progressBarC = new System.Windows.Forms.ProgressBar();
@@ -74,6 +68,13 @@
             this.pbModelProgress = new System.Windows.Forms.ProgressBar();
             this.labelBusBrokenCnt = new System.Windows.Forms.Label();
             this.nBusBrokenCnt = new System.Windows.Forms.NumericUpDown();
+            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actOnTick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTBC)).BeginInit();
@@ -331,7 +332,8 @@
             this.b,
             this.c,
             this.act,
-            this.avgBusLoad});
+            this.avgBusLoad,
+            this.actOnTick});
             this.dataGridView1.Location = new System.Drawing.Point(276, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -340,54 +342,6 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(531, 356);
             this.dataGridView1.TabIndex = 31;
-            // 
-            // tick
-            // 
-            this.tick.HeaderText = "такт";
-            this.tick.MinimumWidth = 8;
-            this.tick.Name = "tick";
-            this.tick.ReadOnly = true;
-            this.tick.Width = 50;
-            // 
-            // a
-            // 
-            this.a.HeaderText = "людей на А";
-            this.a.MinimumWidth = 8;
-            this.a.Name = "a";
-            this.a.ReadOnly = true;
-            this.a.Width = 50;
-            // 
-            // b
-            // 
-            this.b.HeaderText = "людей на B";
-            this.b.MinimumWidth = 8;
-            this.b.Name = "b";
-            this.b.ReadOnly = true;
-            this.b.Width = 50;
-            // 
-            // c
-            // 
-            this.c.HeaderText = "людей на C";
-            this.c.MinimumWidth = 8;
-            this.c.Name = "c";
-            this.c.ReadOnly = true;
-            this.c.Width = 50;
-            // 
-            // act
-            // 
-            this.act.HeaderText = "событие";
-            this.act.MinimumWidth = 8;
-            this.act.Name = "act";
-            this.act.ReadOnly = true;
-            this.act.Width = 75;
-            // 
-            // avgBusLoad
-            // 
-            this.avgBusLoad.HeaderText = "ср. загр. авто";
-            this.avgBusLoad.MinimumWidth = 8;
-            this.avgBusLoad.Name = "avgBusLoad";
-            this.avgBusLoad.ReadOnly = true;
-            this.avgBusLoad.Width = 50;
             // 
             // progressBarA
             // 
@@ -569,6 +523,62 @@
             this.nBusBrokenCnt.Size = new System.Drawing.Size(58, 26);
             this.nBusBrokenCnt.TabIndex = 48;
             // 
+            // tick
+            // 
+            this.tick.HeaderText = "такт";
+            this.tick.MinimumWidth = 8;
+            this.tick.Name = "tick";
+            this.tick.ReadOnly = true;
+            this.tick.Width = 50;
+            // 
+            // a
+            // 
+            this.a.HeaderText = "людей на А";
+            this.a.MinimumWidth = 8;
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            this.a.Width = 50;
+            // 
+            // b
+            // 
+            this.b.HeaderText = "людей на B";
+            this.b.MinimumWidth = 8;
+            this.b.Name = "b";
+            this.b.ReadOnly = true;
+            this.b.Width = 50;
+            // 
+            // c
+            // 
+            this.c.HeaderText = "людей на C";
+            this.c.MinimumWidth = 8;
+            this.c.Name = "c";
+            this.c.ReadOnly = true;
+            this.c.Width = 50;
+            // 
+            // act
+            // 
+            this.act.HeaderText = "событие";
+            this.act.MinimumWidth = 8;
+            this.act.Name = "act";
+            this.act.ReadOnly = true;
+            this.act.Width = 50;
+            // 
+            // avgBusLoad
+            // 
+            this.avgBusLoad.HeaderText = "ср. загр. авто";
+            this.avgBusLoad.MinimumWidth = 8;
+            this.avgBusLoad.Name = "avgBusLoad";
+            this.avgBusLoad.ReadOnly = true;
+            this.avgBusLoad.Width = 50;
+            // 
+            // actOnTick
+            // 
+            this.actOnTick.HeaderText = "событие на";
+            this.actOnTick.MinimumWidth = 8;
+            this.actOnTick.Name = "actOnTick";
+            this.actOnTick.ReadOnly = true;
+            this.actOnTick.Width = 50;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -682,14 +692,15 @@
         internal System.Windows.Forms.NumericUpDown nNearBarC;
         private System.Windows.Forms.Label labelModelProgress;
         internal System.Windows.Forms.ProgressBar pbModelProgress;
+        private System.Windows.Forms.Label labelBusBrokenCnt;
+        internal System.Windows.Forms.NumericUpDown nBusBrokenCnt;
         private System.Windows.Forms.DataGridViewTextBoxColumn tick;
         private System.Windows.Forms.DataGridViewTextBoxColumn a;
         private System.Windows.Forms.DataGridViewTextBoxColumn b;
         private System.Windows.Forms.DataGridViewTextBoxColumn c;
         private System.Windows.Forms.DataGridViewTextBoxColumn act;
         private System.Windows.Forms.DataGridViewTextBoxColumn avgBusLoad;
-        private System.Windows.Forms.Label labelBusBrokenCnt;
-        internal System.Windows.Forms.NumericUpDown nBusBrokenCnt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actOnTick;
     }
 }
 

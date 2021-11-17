@@ -16,7 +16,9 @@ namespace MMEP
         Random rand;
 
         internal uint tick;
-        internal uint _dTick = 17;
+        internal uint _dTick = 15;
+        internal uint nearestActTick;
+
         //internal uint ticksToWork;
         internal List<Bus> listBuses;
         uint totalBusSpawned;
@@ -50,6 +52,7 @@ namespace MMEP
         internal void Reset()
         {
             tick = 0;
+            //nearestActTick = uint.MaxValue;
             rand = new Random();
 
             listBuses = new List<Bus>();
@@ -108,10 +111,13 @@ namespace MMEP
                 else Bus.busSpawnAwait += _dTick;
             }
 
+            nearestActTick = uint.MaxValue;
             foreach (Bus b in listBuses)
             {
+                //if (b.isWorks) nearestActTick = Math.Min(nearestActTick, b.arriveTick);
+
                 if (tick >= b.arriveTick && b.isWorks)
-                {
+                {                  
                     Station stNow = listStations.Find(s => s.name.Equals(b.nextStation));
 
                     if ( rand.Next(101) > startData.BreakingСhance )
@@ -121,7 +127,7 @@ namespace MMEP
                     }
                     else
                     {
-                        act += "bus broken on " + b.nextStation + " (" + b.u1 + ' ' + b.u2 + ')';
+                        act += "bus broken on " + b.nextStation + " (" + b.u1 + '+' + b.u2 + ')';
                         b.TroubleDrain(stNow);
                         b.isWorks = false;
                         form1.Invoke(
@@ -150,6 +156,7 @@ namespace MMEP
                 }//if
             }//forbus
             //tick++;
+            foreach(Bus b in listBuses) if (b.isWorks) nearestActTick = Math.Min(nearestActTick, b.arriveTick);
             tick += _dTick;
         }//tick
         internal float AvgBusLoad()
@@ -196,7 +203,9 @@ namespace MMEP
                                     listStations[1].usersQueue.Count,
                                     listStations[2].usersQueue.Count,
                                     act,
-                                    AvgBusLoad()
+                                    AvgBusLoad(),
+                                    //nearestActTick - tick//
+                                    nearestActTick//
                                 );
                             }
                         );
@@ -215,8 +224,6 @@ namespace MMEP
                         }
                         else value = pbArr[i].Maximum;
 
-                        //f.progressBarA.Invoke(
-                        //pbArr[i].Invoke(
                         form1.Invoke(
                                 (MethodInvoker)delegate
                                 {
@@ -225,14 +232,6 @@ namespace MMEP
                                 }
                             );
                     }
-                    //-----
-                    //f.nAvgAwaitTime.Invoke(
-                    //form1.Invoke(
-                    //        (MethodInvoker)delegate
-                    //        {
-                    //            form1.nAvgAwaitTime.Value = (decimal)outputData.CalcAvgAwaitMinutes();
-                    //        }
-                    //    );
                     //-----
                     form1.Invoke(
                         (MethodInvoker)delegate
