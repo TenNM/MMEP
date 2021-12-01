@@ -114,16 +114,23 @@ namespace MMEP
             nearestActTick = uint.MaxValue;
             foreach (Bus b in listBuses)
             {
-                //if (b.isWorks) nearestActTick = Math.Min(nearestActTick, b.arriveTick);
-
                 if (tick >= b.arriveTick && b.isWorks)
-                {                  
+                {
+                    uint bСopy_u1 = b.u1;
+                    uint bСopy_u2 = b.u2;
+                    uint bNew_u1 = 0;
+                    uint bNew_u2 = 0;
                     Station stNow = listStations.Find(s => s.name.Equals(b.nextStation));
 
                     if ( rand.Next(101) > startData.BreakingСhance )
                     {
                         b.Drain();
-                        outputData._sumBusAwait += b.PickUp(stNow, tick);
+
+                        bСopy_u1 = b.u1;
+                        bСopy_u2 = b.u2;
+
+                        outputData._sumBusAwait += b.PickUp(stNow, tick, ref bNew_u1, ref bNew_u2);
+                        //сколько добавилось
                     }
                     else
                     {
@@ -139,7 +146,8 @@ namespace MMEP
                         continue;
                     }
                     
-                    act += b.nextStation + " " + b.u1 + " " + b.u2;
+                    //act += b.nextStation + " " + b.u1 + " " + b.u2;
+                    act += b.nextStation + " " + bСopy_u1 + "+" + bNew_u1 + " | " + bСopy_u2 + "+" + bNew_u2;
 
                     if (b.nextStation >= 'A' + listStations.Count - 1)
                     {
@@ -157,6 +165,7 @@ namespace MMEP
             }//forbus
             //tick++;
             foreach(Bus b in listBuses) if (b.isWorks) nearestActTick = Math.Min(nearestActTick, b.arriveTick);
+            //nearestActTick = Math.Min(nearestActTick, tick+(Bus.busSpawnRate-Bus.busSpawnAwait));
             tick += _dTick;
         }//tick
         internal float AvgBusLoad()
@@ -367,7 +376,7 @@ namespace MMEP
             for (int i = 0; i < u1; ++i) toStation.usersQueue.Enqueue(new User(1));
             return temp;
         }
-        internal uint PickUp(Station st, uint startTick)
+        internal uint PickUp(Station st, uint startTick, ref uint newU1, ref uint newU2)
         {
             if (null == st) return 0;
             uint tempWaitSum = 0;
@@ -376,8 +385,8 @@ namespace MMEP
             while(u1 + u2 < maxCapacity && st.usersQueue.Count > 0)
             {
                 User u = st.usersQueue.Dequeue();
-                if (1 == u.stationtCntNeed) u1++;
-                else if (2 == u.stationtCntNeed) u2++;
+                if (1 == u.stationtCntNeed) { u1++; newU1++; }
+                else if (2 == u.stationtCntNeed) { u2++; newU2++; }
                 tempWaitSum += u.waitTime;
             }
             return tempWaitSum;
