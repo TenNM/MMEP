@@ -83,6 +83,7 @@ namespace MMEP
         internal void MakeTick()
         {
             act = "";
+            nearestActTick = uint.MaxValue;//тик+время до справна авто = костаната = нужный тик для акта
             foreach (Station s in listStations)
             {
                 foreach(User u in s.usersQueue)
@@ -102,6 +103,7 @@ namespace MMEP
                 listBuses.Count < startData.BusMaxCnt
                 )
             {
+                nearestActTick = Math.Min(nearestActTick, tick+Bus.busSpawnRate-Bus.busSpawnAwait);
                 if (Bus.busSpawnAwait >= Bus.busSpawnRate)
                 {
                     listBuses.Add(new Bus(startData.BusMaxCapacity, 'A', tick));
@@ -111,7 +113,6 @@ namespace MMEP
                 else Bus.busSpawnAwait += _dTick;
             }
 
-            nearestActTick = uint.MaxValue;
             foreach (Bus b in listBuses)
             {
                 if (tick >= b.arriveTick && b.isWorks)
@@ -130,7 +131,6 @@ namespace MMEP
                         bСopy_u2 = b.u2;
 
                         outputData._sumBusAwait += b.PickUp(stNow, tick, ref bNew_u1, ref bNew_u2);
-                        //сколько добавилось
                     }
                     else
                     {
@@ -163,10 +163,10 @@ namespace MMEP
                     }
                 }//if
             }//forbus
-            //tick++;
+
             foreach(Bus b in listBuses) if (b.isWorks) nearestActTick = Math.Min(nearestActTick, b.arriveTick);
-            //nearestActTick = Math.Min(nearestActTick, tick+(Bus.busSpawnRate-Bus.busSpawnAwait));
             tick += _dTick;
+            nearestActTick += _dTick;
         }//tick
         internal float AvgBusLoad()
         {
