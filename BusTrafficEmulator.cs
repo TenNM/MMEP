@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RandExt4MMPE;
 
 namespace MMEP
 {
@@ -404,6 +405,7 @@ namespace MMEP
     class StartData
     {
         internal bool determ = true;
+        Random rand = new Random();
         //-----
         private uint _busMaxCnt;
         internal uint BusMaxCnt
@@ -438,39 +440,39 @@ namespace MMEP
             set { _busMaxCapacity = value;  }
         }
         //------
-        private uint _tAB;
+        private uint _tAB;//normal dist
         internal uint T_AB
         {
             get
             {
                 if (determ) return _tAB;
-                return _tAB;
+                return 60*(uint)rand.NormalDistributionFunction(2, 20);
             }
             set { _tAB = value; }
         }
-        //-----
+        //---------------------------------------------------------------------------
         private uint _tBC;
-        internal uint T_BC
+        internal uint T_BC//normal dist
         {
             get
             {
                 if (determ) return _tBC;
-                return _tBC;
+                return 60*(uint)rand.NormalDistributionFunction(3, 30);
             }
             set { _tBC = value; }
         }
-        //------
+        //---------------------------------------------------------------------
         private uint _tCA;
-        internal uint T_CA
+        internal uint T_CA//normal dist
         {
             get
             {
                 if (determ) return _tCA;
-                return _tCA;
+                return 60*(uint)rand.NormalDistributionFunction(5, 40);
             }
             set { _tCA = value; }
         }
-        //-----
+        //--------------------------------------------------------------------------
         private uint _stSpawnRate;
         internal uint StSpawnRate
         {
@@ -481,29 +483,29 @@ namespace MMEP
             }
             set { _stSpawnRate = value; }
         }
-        //-----
+        //---------------------------------------------------------------------
         private uint _u1SpawnCnt;
-        internal uint U1SpawnCnt
+        internal uint U1SpawnCnt//exp dist
         {
             get
             {
                 if (determ) return _u1SpawnCnt;
-                return _u1SpawnCnt;
+                return (uint)rand.ExponentialDistributionFunction(0.1);
             }
             set { _u1SpawnCnt = value; }
         }
-        //-----
+        //----------------------------------------------------------------------------
         private uint _u2SpawnCnt;
-        internal uint U2SpawnCnt
+        internal uint U2SpawnCnt//exp dist
         {
             get
             {
                 if (determ) return _u2SpawnCnt;
-                return _u2SpawnCnt;
+                return (uint)rand.ExponentialDistributionFunction(0.1);
             }
             set { _u2SpawnCnt = value; }
         }
-        //-----
+        //--------------------------------------------------------------------------
         internal void InStock()
         {
             _stSpawnRate = 5 * 60;

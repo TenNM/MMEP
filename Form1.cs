@@ -73,6 +73,7 @@ namespace MMEP
             nDelay.Value = bte.PauseInterval;
 
             nBusBrokenCnt.Value = 0;
+            cbDeterm_CheckedChanged(null, null);
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -140,5 +141,30 @@ namespace MMEP
             }
             nDelay.Value = bte.PauseInterval;
         }//KeyUp
-    }
+
+        private void cbDeterm_CheckedChanged(object sender, EventArgs e)
+        {
+            Color cOrange = Color.Orange;
+            Color cBlack = Color.Black;
+
+            bte.startData.determ = cbDeterm.Checked;
+
+            if (cbDeterm.Checked)
+            {
+                labelTAB.ForeColor = cBlack; 
+                labelTBC.ForeColor = cBlack; 
+                labelTCA.ForeColor = cBlack;
+                labelU1SpawnCnt.ForeColor = cBlack;
+                labelU2SpawnCnt.ForeColor = cBlack;
+            }
+            else
+            {
+                labelTAB.ForeColor = cOrange;
+                labelTBC.ForeColor = cOrange;
+                labelTCA.ForeColor = cOrange;
+                labelU1SpawnCnt.ForeColor = cOrange;
+                labelU2SpawnCnt.ForeColor = cOrange;
+            }
+        }
+    }//form
 }

@@ -30,11 +30,11 @@
         {
             this.cbDeterm = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelTAB = new System.Windows.Forms.Label();
+            this.labelTBC = new System.Windows.Forms.Label();
+            this.labelTCA = new System.Windows.Forms.Label();
+            this.labelU1SpawnCnt = new System.Windows.Forms.Label();
+            this.labelU2SpawnCnt = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -50,6 +50,13 @@
             this.nBreackingChance = new System.Windows.Forms.NumericUpDown();
             this.nAvgAwaitTime = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actOnTick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.progressBarA = new System.Windows.Forms.ProgressBar();
             this.progressBarB = new System.Windows.Forms.ProgressBar();
             this.progressBarC = new System.Windows.Forms.ProgressBar();
@@ -68,13 +75,6 @@
             this.pbModelProgress = new System.Windows.Forms.ProgressBar();
             this.labelBusBrokenCnt = new System.Windows.Forms.Label();
             this.nBusBrokenCnt = new System.Windows.Forms.NumericUpDown();
-            this.tick = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.act = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avgBusLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actOnTick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nStSpawnRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTAB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nTBC)).BeginInit();
@@ -96,13 +96,16 @@
             // cbDeterm
             // 
             this.cbDeterm.AutoSize = true;
-            this.cbDeterm.Enabled = false;
+            this.cbDeterm.Checked = true;
+            this.cbDeterm.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDeterm.Location = new System.Drawing.Point(12, 12);
             this.cbDeterm.Name = "cbDeterm";
-            this.cbDeterm.Size = new System.Drawing.Size(193, 24);
+            this.cbDeterm.Size = new System.Drawing.Size(184, 24);
             this.cbDeterm.TabIndex = 0;
-            this.cbDeterm.Text = "Детерминированная";
+            this.cbDeterm.Text = "Детерминированая";
+            this.cbDeterm.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.cbDeterm.UseVisualStyleBackColor = true;
+            this.cbDeterm.CheckedChanged += new System.EventHandler(this.cbDeterm_CheckedChanged);
             // 
             // label1
             // 
@@ -113,50 +116,50 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Период появления людей";
             // 
-            // label2
+            // labelTAB
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "t между A и B";
+            this.labelTAB.AutoSize = true;
+            this.labelTAB.Location = new System.Drawing.Point(12, 80);
+            this.labelTAB.Name = "labelTAB";
+            this.labelTAB.Size = new System.Drawing.Size(110, 20);
+            this.labelTAB.TabIndex = 4;
+            this.labelTAB.Text = "t между A и B";
             // 
-            // label3
+            // labelTBC
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "t между B и C";
+            this.labelTBC.AutoSize = true;
+            this.labelTBC.Location = new System.Drawing.Point(12, 110);
+            this.labelTBC.Name = "labelTBC";
+            this.labelTBC.Size = new System.Drawing.Size(110, 20);
+            this.labelTBC.TabIndex = 6;
+            this.labelTBC.Text = "t между B и C";
             // 
-            // label4
+            // labelTCA
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 140);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "t между C и A";
+            this.labelTCA.AutoSize = true;
+            this.labelTCA.Location = new System.Drawing.Point(12, 140);
+            this.labelTCA.Name = "labelTCA";
+            this.labelTCA.Size = new System.Drawing.Size(110, 20);
+            this.labelTCA.TabIndex = 8;
+            this.labelTCA.Text = "t между C и A";
             // 
-            // label5
+            // labelU1SpawnCnt
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 170);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(181, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Прирост едущих 1 ост.";
+            this.labelU1SpawnCnt.AutoSize = true;
+            this.labelU1SpawnCnt.Location = new System.Drawing.Point(12, 170);
+            this.labelU1SpawnCnt.Name = "labelU1SpawnCnt";
+            this.labelU1SpawnCnt.Size = new System.Drawing.Size(181, 20);
+            this.labelU1SpawnCnt.TabIndex = 10;
+            this.labelU1SpawnCnt.Text = "Прирост едущих 1 ост.";
             // 
-            // label6
+            // labelU2SpawnCnt
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 200);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(181, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Прирост едущих 2 ост.";
+            this.labelU2SpawnCnt.AutoSize = true;
+            this.labelU2SpawnCnt.Location = new System.Drawing.Point(12, 200);
+            this.labelU2SpawnCnt.Name = "labelU2SpawnCnt";
+            this.labelU2SpawnCnt.Size = new System.Drawing.Size(181, 20);
+            this.labelU2SpawnCnt.TabIndex = 12;
+            this.labelU2SpawnCnt.Text = "Прирост едущих 2 ост.";
             // 
             // label7
             // 
@@ -343,6 +346,62 @@
             this.dataGridView1.Size = new System.Drawing.Size(531, 356);
             this.dataGridView1.TabIndex = 31;
             // 
+            // tick
+            // 
+            this.tick.HeaderText = "такт";
+            this.tick.MinimumWidth = 8;
+            this.tick.Name = "tick";
+            this.tick.ReadOnly = true;
+            this.tick.Width = 50;
+            // 
+            // a
+            // 
+            this.a.HeaderText = "людей на А";
+            this.a.MinimumWidth = 8;
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            this.a.Width = 50;
+            // 
+            // b
+            // 
+            this.b.HeaderText = "людей на B";
+            this.b.MinimumWidth = 8;
+            this.b.Name = "b";
+            this.b.ReadOnly = true;
+            this.b.Width = 50;
+            // 
+            // c
+            // 
+            this.c.HeaderText = "людей на C";
+            this.c.MinimumWidth = 8;
+            this.c.Name = "c";
+            this.c.ReadOnly = true;
+            this.c.Width = 50;
+            // 
+            // act
+            // 
+            this.act.HeaderText = "событие";
+            this.act.MinimumWidth = 8;
+            this.act.Name = "act";
+            this.act.ReadOnly = true;
+            this.act.Width = 50;
+            // 
+            // avgBusLoad
+            // 
+            this.avgBusLoad.HeaderText = "ср. загр. авто";
+            this.avgBusLoad.MinimumWidth = 8;
+            this.avgBusLoad.Name = "avgBusLoad";
+            this.avgBusLoad.ReadOnly = true;
+            this.avgBusLoad.Width = 50;
+            // 
+            // actOnTick
+            // 
+            this.actOnTick.HeaderText = "событие на";
+            this.actOnTick.MinimumWidth = 8;
+            this.actOnTick.Name = "actOnTick";
+            this.actOnTick.ReadOnly = true;
+            this.actOnTick.Width = 50;
+            // 
             // progressBarA
             // 
             this.progressBarA.Location = new System.Drawing.Point(989, 50);
@@ -523,62 +582,6 @@
             this.nBusBrokenCnt.Size = new System.Drawing.Size(58, 26);
             this.nBusBrokenCnt.TabIndex = 48;
             // 
-            // tick
-            // 
-            this.tick.HeaderText = "такт";
-            this.tick.MinimumWidth = 8;
-            this.tick.Name = "tick";
-            this.tick.ReadOnly = true;
-            this.tick.Width = 50;
-            // 
-            // a
-            // 
-            this.a.HeaderText = "людей на А";
-            this.a.MinimumWidth = 8;
-            this.a.Name = "a";
-            this.a.ReadOnly = true;
-            this.a.Width = 50;
-            // 
-            // b
-            // 
-            this.b.HeaderText = "людей на B";
-            this.b.MinimumWidth = 8;
-            this.b.Name = "b";
-            this.b.ReadOnly = true;
-            this.b.Width = 50;
-            // 
-            // c
-            // 
-            this.c.HeaderText = "людей на C";
-            this.c.MinimumWidth = 8;
-            this.c.Name = "c";
-            this.c.ReadOnly = true;
-            this.c.Width = 50;
-            // 
-            // act
-            // 
-            this.act.HeaderText = "событие";
-            this.act.MinimumWidth = 8;
-            this.act.Name = "act";
-            this.act.ReadOnly = true;
-            this.act.Width = 50;
-            // 
-            // avgBusLoad
-            // 
-            this.avgBusLoad.HeaderText = "ср. загр. авто";
-            this.avgBusLoad.MinimumWidth = 8;
-            this.avgBusLoad.Name = "avgBusLoad";
-            this.avgBusLoad.ReadOnly = true;
-            this.avgBusLoad.Width = 50;
-            // 
-            // actOnTick
-            // 
-            this.actOnTick.HeaderText = "событие на";
-            this.actOnTick.MinimumWidth = 8;
-            this.actOnTick.Name = "actOnTick";
-            this.actOnTick.ReadOnly = true;
-            this.actOnTick.Width = 50;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -617,11 +620,11 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelU2SpawnCnt);
+            this.Controls.Add(this.labelU1SpawnCnt);
+            this.Controls.Add(this.labelTCA);
+            this.Controls.Add(this.labelTBC);
+            this.Controls.Add(this.labelTAB);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbDeterm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -656,11 +659,11 @@
 
         private System.Windows.Forms.CheckBox cbDeterm;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelTAB;
+        private System.Windows.Forms.Label labelTBC;
+        private System.Windows.Forms.Label labelTCA;
+        private System.Windows.Forms.Label labelU1SpawnCnt;
+        private System.Windows.Forms.Label labelU2SpawnCnt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
