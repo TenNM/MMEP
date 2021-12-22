@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RandExt4MMPE;
+using InterferenceGeneratorNamespace;
 
 namespace MMEP
 {
@@ -18,9 +19,9 @@ namespace MMEP
 
         internal uint tick;
         internal uint _dTick = 15;
+        internal uint ticksToWork = 15 * ONEHOUR;
         internal uint nearestActTick;
 
-        //internal uint ticksToWork;
         internal List<Bus> listBuses;
         uint totalBusSpawned;
         internal List<Station> listStations;
@@ -42,9 +43,10 @@ namespace MMEP
             }
         }
 
+        //-------------------------------------------------------
         internal BusTrafficEmulator(Form1 form1)
         {
-            startData = new StartData();
+            startData = new StartData(ref tick, ref _dTick);
             outputData = new OutputData();
             Reset();
 
@@ -71,15 +73,8 @@ namespace MMEP
             justDoIt = true;
             isPause = false;
 
-            //if (null != form1)
-            //{
-            //    form1.Invoke(
-            //                (MethodInvoker)delegate
-            //                {
-            //                    form1.pbModelProgress.Value = (int)ticksToWork;
-            //                }
-            //            );
-            //}
+            startData.interGen.ChetoNeYasnoe2(startData.interGenCoeffs, 1, (int)((int)(ticksToWork + _dTick) / _dTick));
+
         }//reset
         internal void MakeTick()
         {
@@ -190,9 +185,9 @@ namespace MMEP
             g.DrawLine(pen, p.X - 10, p.Y, p.X + 10, p.Y);//hor
         }
         //----------------------------------------
-        internal async void SemiThreadMethod(uint ticksToWork)
+        internal async void SemiThreadMethod()
         {
-            //this.ticksToWork = ticksToWork;
+            //startData.interGen.ChetoNeYasnoe2(startData.interGenCoeffs, 1, (int)((int)(ticksToWork + _dTick) /_dTick) );
             while (justDoIt && tick < ticksToWork)
             {
                 if (isPause)
@@ -406,6 +401,15 @@ namespace MMEP
     {
         internal bool determ = true;
         Random rand = new Random();
+        internal InterferenceGenerator interGen = new InterferenceGenerator();
+        internal List<double> interGenCoeffs = new List<double> {
+                0.309809101184247,
+                0.114186070530348,
+                0.042066228034606,
+                0.017932178770123,
+            };
+        uint _sdTick;
+        uint _sdDTick;
         //-----
         private uint _busMaxCnt;
         internal uint BusMaxCnt
@@ -418,13 +422,13 @@ namespace MMEP
             set { _busMaxCnt = value; }
         }
         //-----
-        private uint _breakingСhance;
-        internal uint BreakingСhance
+        private decimal _breakingСhance;
+        internal decimal BreakingСhance
         {
             get
             {
                 if (determ) return _breakingСhance;
-                return _breakingСhance;
+                return (decimal)( interGen.Values[(int)(_sdTick / _sdDTick)] );
             }
             set { _breakingСhance = value; }
         }
@@ -506,6 +510,11 @@ namespace MMEP
             set { _u2SpawnCnt = value; }
         }
         //--------------------------------------------------------------------------
+        internal StartData(ref uint sdTick, ref uint sdDTick)
+        {
+            _sdTick = sdTick;
+            _sdDTick = sdDTick;
+        }
         internal void InStock()
         {
             _stSpawnRate = 5 * 60;

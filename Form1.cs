@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -46,7 +41,7 @@ namespace MMEP
             bte.startData.U2SpawnCnt = (uint)nU2SpawnCnt.Value;
             bte.startData.BusMaxCnt = (uint)nBusMaxCnt.Value;
             bte.startData.BusMaxCapacity= (uint)nBusMaxCapacity.Value;
-            bte.startData.BreakingСhance = (uint)nBreackingChance.Value;
+            bte.startData.BreakingСhance = nBreackingChance.Value;//!!!!!!!!!!!
         }
         private void FormReset()
         {
@@ -58,7 +53,7 @@ namespace MMEP
             nU2SpawnCnt.Value = bte.startData.U2SpawnCnt;
             nBusMaxCnt.Value = bte.startData.BusMaxCnt;
             nBusMaxCapacity.Value = bte.startData.BusMaxCapacity;
-            nBreackingChance.Value = bte.startData.BreakingСhance;
+            nBreackingChance.Value = bte.startData.BreakingСhance;//!!!!!!!!!!!
 
             progressBarA.Value = 0;
             progressBarB.Value = 0;
@@ -128,11 +123,12 @@ namespace MMEP
                     {
                         StartDataFromGUIToModel();
 
-                        var t = 15 * BusTrafficEmulator.ONEHOUR;
-                        pbModelProgress.Maximum = (int)t;
+                        //var t = 15 * BusTrafficEmulator.ONEHOUR;
+                        //pbModelProgress.Maximum = (int)t;
+                        pbModelProgress.Maximum = (int)bte.ticksToWork;
 
                         Task.Factory.StartNew(
-                        () => bte.SemiThreadMethod(t)
+                        () => bte.SemiThreadMethod()
                         );
 
                         StartDataGUIEnabled(false);
@@ -156,6 +152,8 @@ namespace MMEP
                 labelTCA.ForeColor = cBlack;
                 labelU1SpawnCnt.ForeColor = cBlack;
                 labelU2SpawnCnt.ForeColor = cBlack;
+                labelBreackingChance.ForeColor = cBlack;
+                
             }
             else
             {
@@ -164,6 +162,7 @@ namespace MMEP
                 labelTCA.ForeColor = cOrange;
                 labelU1SpawnCnt.ForeColor = cOrange;
                 labelU2SpawnCnt.ForeColor = cOrange;
+                labelBreackingChance.ForeColor = cOrange;
             }
         }
     }//form

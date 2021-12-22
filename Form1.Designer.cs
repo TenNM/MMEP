@@ -37,7 +37,7 @@
             this.labelU2SpawnCnt = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.labelBreackingChance = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.nStSpawnRate = new System.Windows.Forms.NumericUpDown();
             this.nTAB = new System.Windows.Forms.NumericUpDown();
@@ -179,14 +179,14 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Макс. вместим. авто";
             // 
-            // label9
+            // labelBreackingChance
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 290);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(179, 20);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Шанс поломки авто, %";
+            this.labelBreackingChance.AutoSize = true;
+            this.labelBreackingChance.Location = new System.Drawing.Point(12, 290);
+            this.labelBreackingChance.Name = "labelBreackingChance";
+            this.labelBreackingChance.Size = new System.Drawing.Size(179, 20);
+            this.labelBreackingChance.TabIndex = 18;
+            this.labelBreackingChance.Text = "Шанс поломки авто, %";
             // 
             // label10
             // 
@@ -295,6 +295,7 @@
             // 
             // nBreackingChance
             // 
+            this.nBreackingChance.DecimalPlaces = 2;
             this.nBreackingChance.Location = new System.Drawing.Point(195, 290);
             this.nBreackingChance.Maximum = new decimal(new int[] {
             999999,
@@ -617,7 +618,7 @@
             this.Controls.Add(this.nTAB);
             this.Controls.Add(this.nStSpawnRate);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.labelBreackingChance);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.labelU2SpawnCnt);
@@ -666,7 +667,7 @@
         private System.Windows.Forms.Label labelU2SpawnCnt;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelBreackingChance;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown nStSpawnRate;
         private System.Windows.Forms.NumericUpDown nTAB;
